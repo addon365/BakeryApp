@@ -1,0 +1,15 @@
+<div class="col-md-8">
+  <h2>Add product</h2>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput #itemNameInput="matInput"  [(ngModel)]="item.name" placeholder="Item Name" name="itemName" type="text" autofocus>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="item.quantity" type="number" placeholder="Quanity" name="quantity">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="item.price" type="number" placeholder="Price" name="price">
+    </mat-form-field>
+    <button mat-button (click)="onSubmit()" href="#" style="background-color:rgb(85, 61, 85);color:white ">Add Product</button>
+  </form>
+</div>
