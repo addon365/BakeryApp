@@ -28,7 +28,9 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
   onSubmit() {
-    
+    console.log(this.salesOrder);
+    console.log(this.salesOrder.expectedTime);
+    console.log(this.salesOrder.expectedDate);
     this.salesOrderService.addSalesOrder(this.salesOrder)
       .subscribe((response: any) => {
         console.log(response);

@@ -3,6 +3,8 @@ import { SalesOrder } from '../../models/sales-order';
 import { OrderItem } from '../../models/order-item';
 import { Customer } from '../../models/customer';
 import { Shop } from '../../models/shop';
+import { OrderStatus } from '../../models/order-status';
+import { Utils } from '../../utils';
 
 @Component({
   selector: 'bill-root',
@@ -15,25 +17,7 @@ export class BillRootComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.salesOrder = new SalesOrder(
-      1,
-      new Customer(
-        -1,
-        "",
-        "",
-        "", ),
-      0,
-      0,
-      new Date(),
-      new Date(),
-      "",
-      "",
-      new Shop(
-        1,
-        "",
-        ""),
-      new Array<OrderItem>()
-    );
+    this.salesOrder =SalesOrder.init();
   }
 
   onAddToCart($event) {
@@ -44,7 +28,6 @@ export class BillRootComponent implements OnInit {
   onOrderClicked($event) {
     this.salesOrder = $event;
     this.isOrder = true;
-
   }
 
 }
