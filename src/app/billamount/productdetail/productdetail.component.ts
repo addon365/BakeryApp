@@ -2,6 +2,14 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, 
 import { Product } from '../../models/product';
 import { OrderView } from '../../models/order-view';
 import { Time } from '@angular/common';
+import { CustomerService } from '../../services/customer.service';
+import { Customer } from '../../models/customer';
+import { SalesOrder } from '../../models/sales-order';
+import { OrderItem } from '../../models/order-item';
+import { ProductService } from '../../services/product.service';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-productdetail',
@@ -9,32 +17,52 @@ import { Time } from '@angular/common';
   styleUrls: ['./productdetail.component.css']
 })
 export class ProductdetailComponent implements OnInit {
-  @Input() item: Product;
-  @Input() items: Array<Product> = [];
 
-  orderView: OrderView = new OrderView("", "", new Date(), 14, 30);
+  item: OrderItem;
+  public products: Array<Product> = [];
+  public filteredOptions: Observable<Product[]>;
+  formControl: FormControl = new FormControl();
+  @Output() addToCart = new EventEmitter<any>();
   @ViewChild('quantityfocus') searchinput: ElementRef;
   @HostListener('document:keyup', ['$event'])
   focus(event: KeyboardEvent): void {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode === 13) {
       this.searchinput.nativeElement.focus();
-
     }
   }
-  constructor() { }
+
+  constructor(private customerService: CustomerService,
+    private productService: ProductService) { }
 
   ngOnInit() {
-    // this.searchinput.nativeElement.focus();
-
+    this.productService.getAll()
+      .subscribe((products: Array<Product>) => {
+        this.products = products;
+      });
+    this.filteredOptions = this.formControl.valueChanges.pipe(
+      startWith(''),
+      map(val => this.filter(val))
+    );
   }
-  @Output() cartEvent = new EventEmitter<any>();
+  filter(val: any): any[] {
+    return this.products.filter(product => product.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
+  }
+  
   onAdd(item: any) {
-    this.cartEvent.emit(item);
+    this.addToCart.emit(item);
 
     //this.searchinput.nativeElement.focus();
   }
-  findCustomer(){
-    
+
+  onSelectionChange(product: Product) {
+    this.item = new OrderItem(
+      1,
+      product,
+      product.price,
+      1,
+      null
+    );
   }
+
 }

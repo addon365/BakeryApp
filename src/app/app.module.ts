@@ -44,9 +44,10 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
-import { BillComponent } from './billamount/bill/bill.component';
 import { CartComponent } from './billamount/cart/cart.component';
 import { ProductdetailComponent } from './billamount/productdetail/productdetail.component';
+import { OrderDetailsComponent } from './billamount/order-details/order-details.component';
+import { BillRootComponent } from './billamount/bill-root/bill-root.component';
 
 @NgModule({
   declarations: [
@@ -58,9 +59,10 @@ import { ProductdetailComponent } from './billamount/productdetail/productdetail
     CustomerAddComponent,
     CustomerListComponent,
     CustomerEditComponent,
-    BillComponent,
     CartComponent,
     ProductdetailComponent,
+    OrderDetailsComponent,
+    BillRootComponent,
   ],
   imports: [
     MatTableModule,

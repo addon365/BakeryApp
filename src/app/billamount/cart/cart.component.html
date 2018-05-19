@@ -1,10 +1,10 @@
 <div class="col-md-12">
   <h2>Cart Items</h2>
-  <h3>Total:{{total}}</h3>
-  <mat-card *ngFor="let item of items">
+  <h3>Total:{{salesOrder.total}}</h3>
+  <mat-card *ngFor="let item of salesOrder.orderItems">
     <table class="table">
       <tr>
-        <td>{{item.name}}</td>
+        <td>{{item.product.name}}</td>
         <td class="item-cart">{{item.quantity}}</td>
         <td class="item-cart">$ {{item.price}}</td>
         <td class="item-cart">$ {{item.quantity *item.price}}</td>

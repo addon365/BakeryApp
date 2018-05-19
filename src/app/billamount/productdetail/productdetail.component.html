@@ -1,8 +1,23 @@
+<div>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" text="he" #focuses placeholder="Select an Item" aria-label="Number" matInput [formControl]="formControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option (onSelectionChange)="onSelectionChange(option)" *ngFor="let option of filteredOptions | async" [value]="option.name"
+          (click)="onSelectionChange(option)">
+          {{ option.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
 <div *ngIf="item">
   <h4>Product Details</h4>
   <div class="example-container">
     <mat-form-field>
-      <input matInput [(ngModel)]="item.name" [value]="name" placeholder="Name">
+      <input matInput [(ngModel)]="item.product.name" [value]="name" placeholder="Name">
     </mat-form-field>
     <mat-form-field>
       <input matInput [(ngModel)]="item.quantity" #quantityfocus [value]="item.quantity" placeholder="Quantity">
@@ -12,43 +27,5 @@
     </mat-form-field>
     <button mat-button (click)="onAdd(item)" href="#" style="background-color:rgb(85, 61, 85);color:white ">Add Cart</button>
   </div>
-
-</div>
-<div *ngIf="items">
-  <h4>Order Details</h4>
-  <table class="example-form" cellspacing="0">
-    <tr>
-      <td>
-        <div class="example-full-width">
-        <mat-form-field >
-          <span matPrefix>+91 &nbsp;</span>
-          <input [(ngModel)]="orderView.mobile" type="tel" matInput placeholder="Mobile">
-          <mat-icon matSuffix>mode_edit</mat-icon>
-        </mat-form-field>
-        <button mat-button href="#" (click)="findCustomer()" style="background-color:rgb(85, 61, 85);color:white">Find Customer</button>
-      </div>
-        <mat-form-field class="example-full-width">
-          <input [(ngModel)]="orderView.name" matInput placeholder="First name">
-        </mat-form-field>
-
-        <mat-form-field style="width: 100%">
-          <input [(ngModel)]="orderView.expectedDate" matInput [matDatepicker]="picker" placeholder="Excepted date:(MM/DD/YYYY)">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <div class="example-full-width">
-          <mat-form-field>
-            <input [(ngModel)]="orderView.hour" matInput placeholder="Excepted hours">
-          </mat-form-field>
-          :
-          <mat-form-field>
-            <input [(ngModel)]="orderView.minutes" matInput placeholder="Excepted Minutes">
-          </mat-form-field>
-        </div>
-        <button mat-button href="#" style="background-color:rgb(85, 61, 85);color:white ">Submit</button>
-      </td>
-    </tr>
-  </table>
-
 
 </div>
