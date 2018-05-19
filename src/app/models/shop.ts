@@ -1,7 +1,7 @@
 export class Shop {
     constructor(
         public id: number,
-        public name: string,
+        public shopName: string,
         public code: string
     ) {
 

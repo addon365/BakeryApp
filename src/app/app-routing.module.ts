@@ -10,6 +10,7 @@ import { CustomerListComponent } from './customer/customer-list/customer-list.co
 import { BillRootComponent } from './billamount/bill-root/bill-root.component';
 import { OrderlistComponent } from './orders/orderlist/orderlist.component';
 import { PrintComponent } from './printpage/print/print.component';
+import { SalesReportComponent } from './sales/sales-report/sales-report.component';
 
 
 const routes: Routes = [
@@ -38,8 +39,8 @@ const routes: Routes = [
         component: OrderlistComponent
     },
     {
-        path: 'print',
-        component: PrintComponent
+        path: 'sales-report',
+        component: SalesReportComponent
     }
 
 ];

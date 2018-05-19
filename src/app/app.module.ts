@@ -51,6 +51,10 @@ import { BillRootComponent } from './billamount/bill-root/bill-root.component';
 import { OrderlistComponent } from './orders/orderlist/orderlist.component';
 import { PrintComponent } from './printpage/print/print.component';
 
+import { OrderEditComponent } from './orders/order-edit/order-edit.component';
+import { SalesReportComponent } from './sales/sales-report/sales-report.component';
+import { SalesReportDetailsComponent } from './sales/sales-report-details/sales-report-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +71,12 @@ import { PrintComponent } from './printpage/print/print.component';
     BillRootComponent,
     OrderlistComponent,
     PrintComponent,
+    
+    OrderEditComponent,
+    
+    SalesReportComponent,
+    
+    SalesReportDetailsComponent,
   ],
   imports: [
     MatTableModule,
@@ -105,7 +115,7 @@ import { PrintComponent } from './printpage/print/print.component';
   HttpClientModule
   ],
   providers: [],
-  entryComponents:[ProductEditComponent,CustomerEditComponent],
+  entryComponents:[ProductEditComponent,CustomerEditComponent,OrderEditComponent,SalesReportDetailsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

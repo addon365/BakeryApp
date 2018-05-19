@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { Data } from '@angular/router';
+import { SalesOrder } from '../../models/sales-order';
+import { SalesOrderService } from '../../services/sales-order.service';
+import { OrderEditComponent } from '../order-edit/order-edit.component';
 
 @Component({
   selector: 'app-orderlist',
@@ -8,35 +11,41 @@ import { Data } from '@angular/router';
   styleUrls: ['./orderlist.component.css']
 })
 export class OrderlistComponent implements OnInit {
-  displayedColumns = ['position', 'customername','mobile', 'advance','total','orderedDate','expectedDate','orderedTime','expectedTime','orderStatus','shop'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns = ['id', 'customer','mobile', 'advance','total','orderedDate','expectedDate','orderedTime','expectedTime','orderStatus','shop','actioncolumn'];
+  public salesorder: Array<SalesOrder> = [];
+  public dataSource = new MatTableDataSource(this.salesorder);
+  constructor(private salesorderservice: SalesOrderService,private dialog?: MatDialog) { }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  constructor() { }
+  
 
   ngOnInit() {
+    this.salesorderservice.getAll()
+      .subscribe((resultData: Array<SalesOrder>) => {
+        console.log(this.salesorder)
+        this.salesorder = resultData;
+        this.dataSource = new MatTableDataSource(this.salesorder);
+      });
+      
+  }
+  isPopupOpened = true;
+  editorder(id:number) {
+    this.isPopupOpened = true;
+  
+    const dialogRef = this.dialog.open(OrderEditComponent, {
+     data:{}
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isPopupOpened = false;
+    });
+  }
+  deletecustomer(id:number){
+console.log(id)
   }
 
 }
-export interface Element {
-  position: number;
-  name: string;
-  advance:number;
-  total:number;
-  orderedDate:number;
-  expectedDate:number;
-  orderedTime:any;
-  expectedTime:any;
-  orderStatus:any;
-  shop:number;
-  mobile:number;
- 
-}
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Captain',mobile:908766543, advance:100,total:500,orderedDate:1/10/2018,expectedDate:2/11/2018,orderedTime:'4:00Am',expectedTime:'5:30Am',orderStatus:'pending',shop:2},
-  {position: 2, name: 'raj',mobile:808766543, advance:400,total:600,orderedDate:5/10/2018,expectedDate:4/11/2018,orderedTime:'6:00Am',expectedTime:'8:30Am',orderStatus:'received',shop:1},
- 
-];
