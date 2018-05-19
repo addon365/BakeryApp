@@ -3,6 +3,8 @@ import { Product } from '../../models/product';
 import { MatSnackBar } from '@angular/material';
 import { OrderItem } from '../../models/order-item';
 import { SalesOrder } from '../../models/sales-order';
+import { Utils } from '../../utils';
+import { SalesOrderService } from '../../services/sales-order.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +17,8 @@ export class CartComponent implements OnInit {
   @Output() closeBill = new EventEmitter<boolean>();
 
 
-  constructor(public snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar,
+  private salesOrderService: SalesOrderService ) { }
 
   ngOnInit() {
   }
@@ -26,8 +29,13 @@ export class CartComponent implements OnInit {
   }
 
   onCheckOut() {
-    this.snackBar.open("Billed Successfully", "Ok", {
-      duration: 2000,
+    this.salesOrder.status=Utils.getOrderStatus(Utils.DELIVERED);
+    this.salesOrder.customer=null;
+    this.salesOrderService.addSalesOrder(this.salesOrder)
+    .subscribe((response:any)=>{
+      this.snackBar.open("Billed Successfully", "Ok", {
+        duration: 2000,
+      });
     });
   }
 }

@@ -16,6 +16,10 @@ const STATUS_ACTION = "getStatuses";
 export class Utils {
     public static orderStatuses: Array<OrderStatus> = null;
     public static PENDING=4;
+    public static DELIVERED=1;
+    public static IN_PRODUCTION=2;
+
+    public static IN_STOCK=3;
 
     public static getOrderStatus(statusId: number): OrderStatus {
         if (this.orderStatuses == null) {
