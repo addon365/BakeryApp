@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-customer-edit',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerEditComponent implements OnInit {
 
-  constructor() { }
+  public productForm: FormGroup;
+  constructor(private _formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<CustomerEditComponent>,
+    ) { }
+  onNoClick(): void {
+    this.dialogRef.close();
+   }
 
   ngOnInit() {
   }

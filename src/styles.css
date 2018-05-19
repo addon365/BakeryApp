@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.btn-save{
+    margin-top:10px;
+}
+.toolbar{
+    background-color:   #553d55;
+    border-radius: 5px;
+    color: white;
+
+}
+.mat-card-title{
+    margin-bottom: 0px;
+}
+.toolbar-spacer{
+    flex: 1 1 auto;
+}
+.cusor{
+    cursor:pointer;
+}
+.cusor:hover{
+    cursor: pointer;
+    -moz-transition: cursor 500ms ease-in-out;
+    -o-transition: cursor 500ms ease-in-out;
+    -webkit-transition: cursor 500ms ease-in-out;
+    transition: cursor 500ms ease-in-out;
+}
+.mat-elevation-z8{
+    box-shadow:none;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+ 

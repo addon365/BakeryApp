@@ -8,6 +8,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { BillRootComponent } from './billamount/bill-root/bill-root.component';
+import { OrderlistComponent } from './orders/orderlist/orderlist.component';
+import { PrintComponent } from './printpage/print/print.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,14 @@ const routes: Routes = [
     {
         path: 'bill',
         component: BillRootComponent
+    },
+    {
+        path: 'orderlist',
+        component: OrderlistComponent
+    },
+    {
+        path: 'print',
+        component: PrintComponent
     }
 
 ];

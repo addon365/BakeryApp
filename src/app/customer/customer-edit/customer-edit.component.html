@@ -1,3 +1,61 @@
-<p>
-  customer-edit works!
-</p>
+
+<mat-card-header>
+    <mat-toolbar class="toolbar">
+      <mat-card-title>Customer Details</mat-card-title>
+      <span class="toolbar-spacer"></span>
+      <mat-icon (click)="onNoClick()" style="float: right;" class="cusor">cancel</mat-icon>
+    </mat-toolbar>
+  </mat-card-header>
+  
+  <mat-card-content>
+    
+      <form [formGroup]="_contactForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <label>Customer Name</label>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name">
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <label>Mobile Number</label>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Mobile Number">
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <label>Alternate Mobile</label>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Alternate Mobile">
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-12">
+              <div class="col-md-6">
+                <label>Address</label>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Address">
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-md-12">
+            <div class="col-md-3">
+            <button type="submit" class="btn btn-success btn-save">
+            
+              <mat-icon>save</mat-icon>
+            </button>
+            </div>
+          </div>
+       
+  
+      </form>
+  
+  </mat-card-content>
+  

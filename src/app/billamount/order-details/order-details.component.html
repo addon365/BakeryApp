@@ -1,34 +1,41 @@
 <div *ngIf="salesOrder">
-  <h4>Order Details</h4>
-  <table class="example-form" cellspacing="0">
-    <tr>
-      <td>
-        <div class="example-full-width">
-          <mat-form-field>
-            <span matPrefix>+91 &nbsp;</span>
-            <input [(ngModel)]="salesOrder.customer.mobile" type="tel" matInput placeholder="Mobile">
-            <mat-icon matSuffix>mode_edit</mat-icon>
-          </mat-form-field>
-          <button mat-button href="#" (click)="findCustomer()" style="background-color:rgb(85, 61, 85);color:white">Find Customer</button>
+    <h4>Order Details</h4>
+    <table class="example-form" cellspacing="0">
+      <tr>
+        <td>
+          <div class="col">
+          <div class="row">
+            <div class="col-md-9">
+            <mat-form-field class="example-full-width">
+              <span matPrefix>+91 &nbsp;</span>
+              <input [(ngModel)]="salesOrder.customer.mobile" type="tel" matInput placeholder="Mobile">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <button mat-button href="#" (click)="findCustomer()" style="background-color:rgb(85, 61, 85);color:white">Find Customer</button>
+          </div>
         </div>
-        <mat-form-field class="example-full-width">
-          <input [(ngModel)]="salesOrder.customer.name" matInput placeholder="First name">
-        </mat-form-field>
-
-        <mat-form-field style="width: 100%">
-          <input [(ngModel)]="salesOrder.expectedDate" matInput [matDatepicker]="picker" placeholder="Excepted date:(MM/DD/YYYY)">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <div class="example-full-width">
-          <mat-form-field>
-            <input [(ngModel)]="salesOrder.expectedTime" matInput placeholder="Excepted Time">
-          </mat-form-field>
         </div>
-        <button mat-button (click)="onSubmit()" href="#" style="background-color:rgb(85, 61, 85);color:white ">Submit</button>
-      </td>
-    </tr>
-  </table>
+          <mat-form-field class="example-full-width">
+            <input [(ngModel)]="salesOrder.customer.name" matInput placeholder="First name">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input [(ngModel)]="salesOrder.expectedDate" matInput [matDatepicker]="picker" placeholder="Excepted date:(MM/DD/YYYY)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+            <mat-form-field  class="example-full-width">
+              <input [(ngModel)]="salesOrder.expectedTime" matInput placeholder="Excepted hours">
+            </mat-form-field>
+          
+            <button mat-button (click)="onSubmit()"  style="background-color:rgb(85, 61, 85);color:white ">Print</button>
 
-
-</div>
+        </td>
+      </tr>
+    </table>
+  
+  
+  </div>

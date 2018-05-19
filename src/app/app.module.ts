@@ -48,6 +48,8 @@ import { CartComponent } from './billamount/cart/cart.component';
 import { ProductdetailComponent } from './billamount/productdetail/productdetail.component';
 import { OrderDetailsComponent } from './billamount/order-details/order-details.component';
 import { BillRootComponent } from './billamount/bill-root/bill-root.component';
+import { OrderlistComponent } from './orders/orderlist/orderlist.component';
+import { PrintComponent } from './printpage/print/print.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { BillRootComponent } from './billamount/bill-root/bill-root.component';
     ProductdetailComponent,
     OrderDetailsComponent,
     BillRootComponent,
+    OrderlistComponent,
+    PrintComponent,
   ],
   imports: [
     MatTableModule,
@@ -101,6 +105,7 @@ import { BillRootComponent } from './billamount/bill-root/bill-root.component';
   HttpClientModule
   ],
   providers: [],
+  entryComponents:[ProductEditComponent,CustomerEditComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
