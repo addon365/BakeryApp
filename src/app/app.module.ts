@@ -49,6 +49,7 @@ import { OrderDetailsComponent } from './billamount/order-details/order-details.
 import { BillRootComponent } from './billamount/bill-root/bill-root.component';
 import { OrderlistComponent } from './orders/orderlist/orderlist.component';
 import { PrintComponent } from './printpage/print/print.component';
+
 import { StoreSelectorComponent } from './store-selector/store-selector.component';
 
 @NgModule({
