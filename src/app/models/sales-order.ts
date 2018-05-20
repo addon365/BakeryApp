@@ -34,10 +34,7 @@ export class SalesOrder {
             "",
             "",
             Utils.getOrderStatus(Utils.PENDING),
-            new Shop(
-                2,
-                "",
-                ""),
+            Utils.getCurrentShop(),
             new Array<OrderItem>()
         );
     }

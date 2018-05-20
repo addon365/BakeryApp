@@ -1,4 +1,5 @@
 import { OrderStatus } from "./models/order-status";
+import { Shop } from "./models/shop";
 
 const API_URL = 'http://localhost:8080/';
 const PRODUCT_URL = API_URL + "api/product/";
@@ -15,15 +16,16 @@ const STATUS_ACTION = "getStatuses";
 
 export class Utils {
     public static orderStatuses: Array<OrderStatus> = null;
-    public static PENDING=4;
-    public static DELIVERED=1;
-    public static IN_PRODUCTION=2;
+    public static SHOP_KEY = "Shop";
+    public static PENDING = 4;
+    public static DELIVERED = 1;
+    public static IN_PRODUCTION = 2;
 
-    public static IN_STOCK=3;
+    public static IN_STOCK = 3;
 
     public static getOrderStatus(statusId: number): OrderStatus {
         if (this.orderStatuses == null) {
-            Utils.orderStatuses=new Array<OrderStatus>();
+            Utils.orderStatuses = new Array<OrderStatus>();
             Utils.orderStatuses.push(new OrderStatus(1, "Delivered", "D"));
             Utils.orderStatuses.push(new OrderStatus(2, "InProduction", "IP"));
             Utils.orderStatuses.push(new OrderStatus(3, "InStock", "IS"));
@@ -51,5 +53,9 @@ export class Utils {
     }
     public static findCustomerURL() {
         return CUSTOMER_URL + ACTION_FIND;
+    }
+    public static getCurrentShop() {
+        let shop: Shop = JSON.parse(localStorage.getItem(this.SHOP_KEY));
+        return shop;
     }
 }

@@ -1,0 +1,17 @@
+<div style="text-align:center">
+  <h2>Bakery App</h2>
+  <h4>Welcome to Bakery App.</h4>
+
+  <form>
+    <mat-form-field>
+      <mat-select placeholder="Choose a Store" [(ngModel)]="selectedShopName" name="shop">
+        <mat-option *ngFor="let shop of shops" [value]="shop.shopName">
+          {{shop.shopName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <br/>
+  <button mat-button (click)="onOk()">Ok</button>
+</div>
