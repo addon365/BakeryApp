@@ -1,0 +1,65 @@
+
+<mat-card-header>
+    <mat-toolbar class="toolbar">
+      <mat-card-title>Order Details</mat-card-title>
+      <span class="toolbar-spacer"></span>
+      <mat-icon (click)="onNoClick()" style="float: right;" class="cusor">cancel</mat-icon>
+    </mat-toolbar>
+  </mat-card-header>
+  
+  <mat-card-content>
+    
+      <form [formGroup]="_contactForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <label>ID</label>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="No">
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <label>Customer Name</label>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Customer Name">
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <label>	Mobile</label>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="	Mobile Number">
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-12">
+              <div class="col-md-6">
+                <label>OrderStatus</label>
+                <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Select">
+                        <mat-option value="Delivered">Delivered</mat-option>
+                        <mat-option value="InProduction">InProduction</mat-option>
+                        <mat-option value="InStock">InStock</mat-option>
+                        <mat-option value="Pending">Pending</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-md-12">
+            <div class="col-md-3">
+            <button type="submit" class="btn btn-success btn-save">
+            
+              <mat-icon>save</mat-icon>
+            </button>
+            </div>
+          </div>
+       
+  
+      </form>
+  
+  </mat-card-content>
