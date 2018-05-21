@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { CustomerEditComponent } from '../customer-edit/customer-edit.component';
+import { Customer } from '../../models/customer';
+import { CustomerService } from '../../services/customer.service';
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -9,15 +11,17 @@ import { CustomerEditComponent } from '../customer-edit/customer-edit.component'
 })
 export class CustomerListComponent implements OnInit {
   isPopupOpened = true;
-  displayedColumns = ['position', 'name', 'mobile','amobile','address','actioncolumn'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns = ['id', 'name', 'mobile','amobile','actioncolumn'];
+  @Input() public selectedCustomer:Customer;
+  public customers: Array<Customer> = [];
+  public dataSource = new MatTableDataSource(this.customers);
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  constructor(  private dialog?: MatDialog) { }
+  constructor( private customerservice:CustomerService , private dialog?: MatDialog) { }
   editcustomer(id: number) {
     this.isPopupOpened = true;
   
@@ -35,19 +39,11 @@ console.log(id)
   }
 
   ngOnInit() {
+    this.customerservice.getAll()
+      .subscribe((resultData: Array<Customer>) => {
+        this.customers = resultData;
+        this.dataSource = new MatTableDataSource(this.customers);
+      });
   }
 
 }
-export interface Element {
-  position: number;
-  name: string;
-  mobile:number;
-  amobile:number;
-  address:any;
- 
-}
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Captain', mobile:987685665,amobile:876543987,address:'no-2,kovil street,agathiyar nagar'},
-  {position: 2, name: 'Raj', mobile:987685665,amobile:876543987,address:'no-3,kovil street,agathiyar nagar'},
- 
-];

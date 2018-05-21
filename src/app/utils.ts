@@ -53,6 +53,12 @@ export class Utils {
     public static addProductURL() {
         return PRODUCT_URL + ADD_ACTION;
     }
+    public static addCustomerURL() {
+        return CUSTOMER_URL + ADD_ACTION;
+    }
+    public static getCustomerURL() {
+        return CUSTOMER_URL + GET_ACTION;
+    }
     public static findCustomerURL() {
         return CUSTOMER_URL + ACTION_FIND;
     }
