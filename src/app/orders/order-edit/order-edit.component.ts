@@ -36,9 +36,10 @@ export class OrderEditComponent implements OnInit {
   }
 
   onSubmit() {
+  
     this.salesOrderService.editSalesOrder(this.data)
       .subscribe((response) => {
-       console.log(response);
+        this.dialogRef.close();
       });
   }
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
 import { SalesReportDetailsComponent } from '../sales-report-details/sales-report-details.component';
+import { SalesOrder } from '../../models/sales-order';
+import { SalesOrderService } from '../../services/sales-order.service';
+import { OrderStatus } from '../../models/order-status';
 
 @Component({
   selector: 'app-sales-report',
@@ -8,8 +11,9 @@ import { SalesReportDetailsComponent } from '../sales-report-details/sales-repor
   styleUrls: ['./sales-report.component.css']
 })
 export class SalesReportComponent implements OnInit {
-  displayedColumns = ['position', 'name','mobile','total','actionsColumn'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns = ['position', 'name', 'mobile', 'total', 'actionsColumn'];
+  dataSource: MatTableDataSource<SalesOrder>;
+  salesReport: Array<SalesOrder>;
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -17,12 +21,14 @@ export class SalesReportComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   isPopupOpened = true;
-  constructor(  private dialog?: MatDialog) { }
-  salesshow(id: number) {
+  constructor(private salesOrderService: SalesOrderService,
+    private dialog?: MatDialog,
+  ) { }
+  salesshow(salesOrder: SalesOrder) {
     this.isPopupOpened = true;
-  
+
     const dialogRef = this.dialog.open(SalesReportDetailsComponent, {
-     data:{}
+      data: salesOrder
     });
 
 
@@ -32,19 +38,13 @@ export class SalesReportComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.salesOrderService.getSalesReport()
+      .subscribe((salesReport: Array<SalesOrder>) => {
+        this.salesReport = salesReport;
+        this.dataSource = new MatTableDataSource(this.salesReport);
+      });
+
   }
-  
+
 
 }
-export interface Element {
-  position: number;
-  name: string;
-  mobile:number;
-  total:number;
- 
-}
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Captain', mobile:987685665, total:200},
-  {position: 2, name: 'Raj', mobile:987685665, total:300},
- 
-];

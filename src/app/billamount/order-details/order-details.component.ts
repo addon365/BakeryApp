@@ -1,10 +1,14 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+
+import { Component, OnInit, Input, Output, EventEmitter ,ViewChild, ElementRef } from '@angular/core';
+
 import { CustomerService } from '../../services/customer.service';
 import { SalesOrder } from '../../models/sales-order';
 import { Customer } from '../../models/customer';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { PrintComponent } from '../../printpage/print/print.component';
 import { MatDialog } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'order-details',
@@ -12,11 +16,17 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
+
   isPopupOpened=true;
+  @Output() orderCompleted = new EventEmitter<boolean>();
   @Input() public salesOrder: SalesOrder;
   constructor(
     private customerService: CustomerService,
-    private salesOrderService: SalesOrderService,private dialog?: MatDialog) { }
+    private salesOrderService: SalesOrderService,
+    private snackBar: MatSnackBar,
+    private dialog?: MatDialog,
+    ) { }
+
 
   ngOnInit() {
 
@@ -30,13 +40,12 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
   onSubmit() {
-    console.log(this.salesOrder);
-    
-    console.log(this.salesOrder.expectedTime);
-    console.log(this.salesOrder.expectedDate);
     this.salesOrderService.addSalesOrder(this.salesOrder)
       .subscribe((response: any) => {
-        console.log(response);
+        this.orderCompleted.emit(true);
+        this.snackBar.open("Order Submitted Successfull", "ok", {
+          duration: 2000
+        });
       });
       this.isPopupOpened = true;
 

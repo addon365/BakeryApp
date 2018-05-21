@@ -5,6 +5,7 @@ import { Customer } from '../../models/customer';
 import { Shop } from '../../models/shop';
 import { OrderStatus } from '../../models/order-status';
 import { Utils } from '../../utils';
+import { SalesOrderService } from '../../services/sales-order.service';
 
 @Component({
   selector: 'bill-root',
@@ -14,10 +15,16 @@ import { Utils } from '../../utils';
 export class BillRootComponent implements OnInit {
   public salesOrder: SalesOrder;
   public isOrder: boolean = false;
-  constructor() { }
+  constructor(private orderService: SalesOrderService) { }
 
   ngOnInit() {
-    this.salesOrder =SalesOrder.init();
+    this.salesOrder = SalesOrder.init();
+    this.orderService.getStatuses()
+      .subscribe((orderStatuses: Array<OrderStatus>) => {
+        Utils.orderStatuses = orderStatuses;
+        this.salesOrder = SalesOrder.init();
+      });
+    
   }
 
   onAddToCart($event) {
@@ -28,6 +35,11 @@ export class BillRootComponent implements OnInit {
   onOrderClicked($event) {
     this.salesOrder = $event;
     this.isOrder = true;
+  }
+  onOrderCompleted($event){
+    console.log("On Order Completed");
+    this.isOrder=false;
+    this.salesOrder=SalesOrder.init();
   }
 
 }
