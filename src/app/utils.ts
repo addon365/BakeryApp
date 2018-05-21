@@ -1,5 +1,6 @@
 import { OrderStatus } from "./models/order-status";
 import { Shop } from "./models/shop";
+import { SalesOrderService } from "./services/sales-order.service";
 
 const API_URL = 'http://localhost:8080/';
 const PRODUCT_URL = API_URL + "api/product/";
@@ -21,23 +22,14 @@ export class Utils {
     public static PENDING = 4;
     public static DELIVERED = 1;
     public static IN_PRODUCTION = 2;
-
     public static IN_STOCK = 3;
-    private static initOrderStatuses() {
-        if (this.orderStatuses == null) {
-            Utils.orderStatuses = new Array<OrderStatus>();
-            Utils.orderStatuses.push(new OrderStatus(1, "Delivered", "D"));
-            Utils.orderStatuses.push(new OrderStatus(2, "InProduction", "IP"));
-            Utils.orderStatuses.push(new OrderStatus(3, "InStock", "IS"));
-            Utils.orderStatuses.push(new OrderStatus(4, "Pending", "P"));
-        }
-    }
+    
+    
     public static getOrderStatuses(): Array<OrderStatus> {
-        Utils.initOrderStatuses();
         return this.orderStatuses;
     }
     public static getOrderStatus(statusId: number): OrderStatus {
-        Utils.initOrderStatuses();
+        
         return this.orderStatuses[statusId];
     }
     public static getStatusesURL() {

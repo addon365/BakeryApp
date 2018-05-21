@@ -39,7 +39,7 @@
           <label>OrderStatus</label>
           <mat-form-field class="example-full-width">
             <mat-select placeholder="Order Status" [(ngModel)]="data.orderStatus" name="food">
-              <mat-option *ngFor="let orderStatus of orderStatuses" [value]="orderStatus.name">
+              <mat-option *ngFor="let orderStatus of orderStatuses" [value]="orderStatus">
                 {{orderStatus.name}}
               </mat-option>
             </mat-select>
