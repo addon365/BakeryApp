@@ -15,17 +15,25 @@ export class CartComponent implements OnInit {
   @Input() salesOrder: SalesOrder;
   @Output() onOrder = new EventEmitter<any>();
   @Output() closeBill = new EventEmitter<boolean>();
-
+  showOrderItems= false;
 
   constructor(private snackBar: MatSnackBar,
     private salesOrderService: SalesOrderService) { }
 
   ngOnInit() {
+    
+    if (this.salesOrder.orderItems != null) {
+        this.showOrderItems = true;
+    }
+    else{
+      this.showOrderItems=false;
+    }
   }
 
 
   onOrderClick() {
     this.onOrder.emit(this.salesOrder);
+
   }
 
   onCheckOut() {

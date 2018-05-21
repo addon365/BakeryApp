@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { SalesOrder } from '../../models/sales-order';
 import { Customer } from '../../models/customer';
 import { SalesOrderService } from '../../services/sales-order.service';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'order-details',
@@ -11,10 +13,12 @@ import { SalesOrderService } from '../../services/sales-order.service';
 })
 export class OrderDetailsComponent implements OnInit {
 
+  @Output() orderCompleted = new EventEmitter<boolean>();
   @Input() public salesOrder: SalesOrder;
   constructor(
     private customerService: CustomerService,
-    private salesOrderService: SalesOrderService) { }
+    private salesOrderService: SalesOrderService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -28,12 +32,13 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
   onSubmit() {
-    console.log(this.salesOrder);
-    console.log(this.salesOrder.expectedTime);
-    console.log(this.salesOrder.expectedDate);
+
     this.salesOrderService.addSalesOrder(this.salesOrder)
       .subscribe((response: any) => {
-        console.log(response);
+        this.orderCompleted.emit(true);
+        this.snackBar.open("Order Submitted Successfull", "ok", {
+          duration: 2000
+        });
       });
   }
 }

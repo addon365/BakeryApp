@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MatTableDataSource } from '@angular/material';
+import { MatDialogRef, MatTableDataSource, MAT_DIALOG_DATA } from '@angular/material';
+import { Product } from '../../models/product';
+import { SalesOrder } from '../../models/sales-order';
+import { OrderItem } from '../../models/order-item';
 
 @Component({
   selector: 'app-sales-report-details',
@@ -8,14 +11,17 @@ import { MatDialogRef, MatTableDataSource } from '@angular/material';
   styleUrls: ['./sales-report-details.component.css']
 })
 export class SalesReportDetailsComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'quantity', 'price','total'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns = ['id', 'name', 'quantity', 'price', 'total'];
+  dataSource: MatTableDataSource<OrderItem>;
   constructor(private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<SalesReportDetailsComponent>,
-    ) { }
+    @Inject(MAT_DIALOG_DATA) public data: SalesOrder
+  ) {
+    this.dataSource = new MatTableDataSource<OrderItem>(this.data.orderItems);
+  }
   onNoClick(): void {
     this.dialogRef.close();
-   }
+  }
 
 
 
@@ -23,16 +29,3 @@ export class SalesReportDetailsComponent implements OnInit {
   }
 
 }
-export interface Element {
-  id: number;
-  name: string;
-  quantity:number;
-  price:number;
-  total:number;
- 
-}
-const ELEMENT_DATA: Element[] = [
-  {id: 1, name: 'Captain', quantity:2,price:50,total:100 },
-  {id: 2, name: 'raj', quantity:2,price:50,total:100 },
- 
-];

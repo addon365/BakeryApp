@@ -8,6 +8,7 @@ const CUSTOMER_URL = API_URL + "api/customer/";
 const ORDER_URL = API_URL + "api/order/";
 const SHOP_URL = API_URL + "api/shop/";
 
+const ACTION_SALES_REPORT = "getSalesReport";
 const ACTION_FIND = "find";
 const GET_ACTION = "get";
 const ADD_ACTION = "add";
@@ -19,17 +20,18 @@ const EDIT_ACTION = "edit";
 export class Utils {
     public static orderStatuses: Array<OrderStatus> = null;
     public static SHOP_KEY = "Shop";
-    public static PENDING = 4;
-    public static DELIVERED = 1;
-    public static IN_PRODUCTION = 2;
-    public static IN_STOCK = 3;
-    
-    
+    public static PENDING = 8;
+    public static DELIVERED = 5;
+    public static IN_PRODUCTION = 6;
+    public static IN_STOCK = 7;
+
+
     public static getOrderStatuses(): Array<OrderStatus> {
         return this.orderStatuses;
     }
     public static getOrderStatus(statusId: number): OrderStatus {
-        
+        if (this.orderStatuses == null)
+            return new OrderStatus(Utils.PENDING, "PENDING", "P");
         return this.orderStatuses[statusId];
     }
     public static getStatusesURL() {
@@ -43,6 +45,9 @@ export class Utils {
     }
     public static editOrderURL() {
         return ORDER_URL + EDIT_ACTION;
+    }
+    public static getSalesURL() {
+        return ORDER_URL + ACTION_SALES_REPORT;
     }
     public static addOrderURL() {
         return ORDER_URL + ADD_ACTION;

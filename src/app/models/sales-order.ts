@@ -20,8 +20,9 @@ export class SalesOrder {
     ) { }
 
     public static init(): SalesOrder {
+        
         return new SalesOrder(
-            1,
+            -1,
             new Customer(
                 -1,
                 "",

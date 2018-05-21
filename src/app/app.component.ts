@@ -15,6 +15,7 @@ export class AppComponent {
       .subscribe((orderStatuses: Array<OrderStatus>) => {
         Utils.orderStatuses = orderStatuses;
       });
+      
   }
 
 
