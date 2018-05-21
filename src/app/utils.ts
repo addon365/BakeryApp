@@ -32,7 +32,11 @@ export class Utils {
     public static getOrderStatus(statusId: number): OrderStatus {
         if (this.orderStatuses == null)
             return new OrderStatus(Utils.PENDING, "PENDING", "P");
-        return this.orderStatuses[statusId];
+        this.orderStatuses.forEach(element => {
+            if (element.id == statusId)
+                return element;
+        });
+        return new OrderStatus(Utils.PENDING, "PENDING", "P");
     }
     public static getStatusesURL() {
         return ORDER_URL + STATUS_ACTION;

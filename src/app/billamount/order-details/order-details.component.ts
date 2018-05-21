@@ -8,6 +8,7 @@ import { SalesOrderService } from '../../services/sales-order.service';
 import { PrintComponent } from '../../printpage/print/print.component';
 import { MatDialog } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
+import { Utils } from '../../utils';
 
 
 @Component({
@@ -40,6 +41,8 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
   onSubmit() {
+    this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
+
     this.salesOrderService.addSalesOrder(this.salesOrder)
       .subscribe((response: SalesOrder) => {
         this.isPopupOpened = true;
