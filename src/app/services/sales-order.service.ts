@@ -15,6 +15,9 @@ export class SalesOrderService {
   addSalesOrder(salesOrder: SalesOrder) {
     return this.httpClient.post(`${Utils.addOrderURL()}`, salesOrder);
   }
+  editSalesOrder(salesOrder: SalesOrder) {
+    return this.httpClient.post(`${Utils.editOrderURL()}`, salesOrder);
+  }
   getStatuses() {
     return this.httpClient.get(`${Utils.getStatusesURL()}`);
   }

@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
 
 
   constructor(private snackBar: MatSnackBar,
-  private salesOrderService: SalesOrderService ) { }
+    private salesOrderService: SalesOrderService) { }
 
   ngOnInit() {
   }
@@ -29,13 +29,13 @@ export class CartComponent implements OnInit {
   }
 
   onCheckOut() {
-    this.salesOrder.status=Utils.getOrderStatus(Utils.DELIVERED);
-    this.salesOrder.customer=null;
+    this.salesOrder.orderStatus = Utils.getOrderStatus(Utils.DELIVERED);
+    this.salesOrder.customer = null;
     this.salesOrderService.addSalesOrder(this.salesOrder)
-    .subscribe((response:any)=>{
-      this.snackBar.open("Billed Successfully", "Ok", {
-        duration: 2000,
+      .subscribe((response: any) => {
+        this.snackBar.open("Billed Successfully", "Ok", {
+          duration: 2000,
+        });
       });
-    });
   }
 }

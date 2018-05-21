@@ -11,32 +11,32 @@ import { OrderEditComponent } from '../order-edit/order-edit.component';
   styleUrls: ['./orderlist.component.css']
 })
 export class OrderlistComponent implements OnInit {
-  displayedColumns = ['id', 'customer','mobile', 'advance','total','orderedDate','expectedDate','orderedTime','expectedTime','orderStatus','shop','actioncolumn'];
+  displayedColumns = ['id', 'customer', 'mobile', 'advance', 'total', 'orderedDate', 'expectedDate', 'orderedTime', 'expectedTime', 'orderStatus', 'shop', 'actioncolumn'];
   public salesorder: Array<SalesOrder> = [];
   public dataSource = new MatTableDataSource(this.salesorder);
-  constructor(private salesorderservice: SalesOrderService,private dialog?: MatDialog) { }
+  constructor(private salesorderservice: SalesOrderService, private dialog?: MatDialog) { }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  
+
 
   ngOnInit() {
     this.salesorderservice.getAll()
       .subscribe((resultData: Array<SalesOrder>) => {
-        console.log(this.salesorder)
+        console.log(resultData);
         this.salesorder = resultData;
         this.dataSource = new MatTableDataSource(this.salesorder);
       });
-      
+
   }
   isPopupOpened = true;
-  editorder(id:number) {
+  editorder(salesOrder: SalesOrder) {
     this.isPopupOpened = true;
-  
+
     const dialogRef = this.dialog.open(OrderEditComponent, {
-     data:{}
+      data: salesOrder
     });
 
 
@@ -44,8 +44,8 @@ export class OrderlistComponent implements OnInit {
       this.isPopupOpened = false;
     });
   }
-  deletecustomer(id:number){
-console.log(id)
+  deletecustomer(id: number) {
+    console.log(id)
   }
 
 }

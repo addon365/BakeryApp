@@ -14,7 +14,7 @@ export class SalesOrder {
         public expectedDate: Date,
         public orderedTime: string,
         public expectedTime: string,
-        public status: OrderStatus,
+        public orderStatus: OrderStatus,
         public shop: Shop,
         public orderItems: Array<OrderItem>
     ) { }

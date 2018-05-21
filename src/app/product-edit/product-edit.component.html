@@ -1,52 +1,15 @@
-
-<mat-card-header>
-    <mat-toolbar class="toolbar">
-      <mat-card-title>Product Details</mat-card-title>
-      <span class="toolbar-spacer"></span>
-      <mat-icon (click)="onNoClick()" style="float: right;" class="cusor">cancel</mat-icon>
-    </mat-toolbar>
-  </mat-card-header>
-  
-  <mat-card-content>
-    
-      <form [formGroup]="_contactForm" (submit)="onSubmit()">
-        <div class="form-group">
-          <div class="col-md-12">
-            <div class="col-md-6">
-              <label>Item Name</label>
-              <mat-form-field class="example-full-width">
-                  <input matInput placeholder=" Item Name">
-                </mat-form-field>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="col-md-6">
-              <label>Quality</label>
-              <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Quality">
-                </mat-form-field>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="col-md-6">
-              <label>Price</label>
-              <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Price">
-                </mat-form-field>
-            </div>
-          </div>
-          </div>
-         
-          <div class="col-md-12">
-            <div class="col-md-3">
-            <button type="submit" class="btn btn-success btn-save">
-            
-              <mat-icon>save</mat-icon>
-            </button>
-            </div>
-          </div>
-       
-  
-      </form>
-  
-  </mat-card-content>
+<div *ngIf="item" class="col-md-8">
+  <h2>Add product</h2>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput #itemNameInput="matInput"  [(ngModel)]="item.name" placeholder="Item Name" name="itemName" type="text" autofocus>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="item.quantity" type="number" placeholder="Quanity" name="quantity">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="item.price" type="number" placeholder="Price" name="price">
+    </mat-form-field>
+    <button mat-button (click)="onSubmit()" href="#" style="background-color:rgb(85, 61, 85);color:white ">Add Product</button>
+  </form>
+</div>

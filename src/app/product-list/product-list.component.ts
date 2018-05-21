@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProductEditComponent } from '../product-edit/product-edit.component';
@@ -12,7 +12,7 @@ import { ProductService } from '../services/product.service';
 export class ProductListComponent implements OnInit {
   isPopupOpened = true;
   displayedColumns = ['id', 'name', 'quantity', 'price','actionsColumn'];
-
+  @Input() public selectedItem:Product;
   public products: Array<Product> = [];
   public dataSource = new MatTableDataSource(this.products);
 
@@ -30,27 +30,12 @@ export class ProductListComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.products);
       });
   }
-  editproduct(id: number) {
-    this.isPopupOpened = true;
-   //const product = this.productService.getallproducts().find(p => p.id === id);
-    const dialogRef = this.dialog.open(ProductEditComponent, {
-     // data: product
-    });
-
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.isPopupOpened = false;
-    });
+  editproduct(product:Product) {
+   this.selectedItem=product;
   }
  
   deleteproduct(id: number) {
-    console.log(id);
-    console.log(this.products.length);
-    const Product = this.products.findIndex(c => c.id === id);
-    this.products.splice(Product, 1);
-   // for(let i=0;i<this.products.length;i++){
-      //if(this.products[i]["name"] == id){
-//this.products.splice(id,1);
+    
       }
     }
 

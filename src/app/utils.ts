@@ -11,6 +11,7 @@ const ACTION_FIND = "find";
 const GET_ACTION = "get";
 const ADD_ACTION = "add";
 const STATUS_ACTION = "getStatuses";
+const EDIT_ACTION = "edit";
 
 
 
@@ -22,8 +23,7 @@ export class Utils {
     public static IN_PRODUCTION = 2;
 
     public static IN_STOCK = 3;
-
-    public static getOrderStatus(statusId: number): OrderStatus {
+    private static initOrderStatuses() {
         if (this.orderStatuses == null) {
             Utils.orderStatuses = new Array<OrderStatus>();
             Utils.orderStatuses.push(new OrderStatus(1, "Delivered", "D"));
@@ -31,6 +31,13 @@ export class Utils {
             Utils.orderStatuses.push(new OrderStatus(3, "InStock", "IS"));
             Utils.orderStatuses.push(new OrderStatus(4, "Pending", "P"));
         }
+    }
+    public static getOrderStatuses(): Array<OrderStatus> {
+        Utils.initOrderStatuses();
+        return this.orderStatuses;
+    }
+    public static getOrderStatus(statusId: number): OrderStatus {
+        Utils.initOrderStatuses();
         return this.orderStatuses[statusId];
     }
     public static getStatusesURL() {
@@ -41,6 +48,9 @@ export class Utils {
     }
     public static getOrderURL() {
         return ORDER_URL + GET_ACTION;
+    }
+    public static editOrderURL() {
+        return ORDER_URL + EDIT_ACTION;
     }
     public static addOrderURL() {
         return ORDER_URL + ADD_ACTION;

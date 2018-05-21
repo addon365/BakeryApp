@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { CustomerEditComponent } from '../../customer/customer-edit/customer-edit.component';
+import { SalesOrder } from '../../models/sales-order';
+import { OrderStatus } from '../../models/order-status';
+import { Utils } from '../../utils';
+import { SalesOrderService } from '../../services/sales-order.service';
 
 @Component({
   selector: 'app-order-edit',
@@ -11,15 +15,30 @@ import { CustomerEditComponent } from '../../customer/customer-edit/customer-edi
 export class OrderEditComponent implements OnInit {
 
   public productForm: FormGroup;
+  public orderStatuses: Array<OrderStatus>;
+
   constructor(private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<OrderEditComponent>,
-    ) { }
+    private salesOrderService: SalesOrderService,
+    public snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: SalesOrder
+  ) {
+
+  }
   onNoClick(): void {
     this.dialogRef.close();
-   }
+  }
 
 
   ngOnInit() {
+    this.orderStatuses = Utils.getOrderStatuses();
+
   }
 
+  onSubmit() {
+    this.salesOrderService.editSalesOrder(this.data)
+      .subscribe((response) => {
+       console.log(response);
+      });
+  }
 }
