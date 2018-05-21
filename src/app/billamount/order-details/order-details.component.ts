@@ -4,6 +4,7 @@ import { SalesOrder } from '../../models/sales-order';
 import { Customer } from '../../models/customer';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { MatSnackBar } from '@angular/material';
+import { Utils } from '../../utils';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
   onSubmit() {
+    this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
 
     this.salesOrderService.addSalesOrder(this.salesOrder)
       .subscribe((response: any) => {

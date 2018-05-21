@@ -22,7 +22,6 @@ export class BillRootComponent implements OnInit {
     this.orderService.getStatuses()
       .subscribe((orderStatuses: Array<OrderStatus>) => {
         Utils.orderStatuses = orderStatuses;
-        this.salesOrder = SalesOrder.init();
       });
     
   }
