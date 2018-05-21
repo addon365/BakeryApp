@@ -10,7 +10,7 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  isPopupOpened = true;
+ 
   displayedColumns = ['id', 'name', 'quantity', 'price','actionsColumn'];
   @Input() public selectedItem:Product;
   public products: Array<Product> = [];

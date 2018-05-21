@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import{Customer} from '../models/customer';
 import { Utils } from '../utils';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
@@ -20,5 +20,11 @@ export class CustomerService {
       params: httpParams,
       responseType: 'json'
     });
+  }
+  public getAll() {
+    return this.httpClient.get(`${Utils.getCustomerURL()}`);
+  }
+   public addCustomer(customer: Customer) {
+    return this.httpClient.post(`${Utils.addCustomerURL()}`, customer);
   }
 }

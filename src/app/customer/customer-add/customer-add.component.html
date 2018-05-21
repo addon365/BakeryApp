@@ -2,18 +2,14 @@
     <h2>Add Customer</h2>
   <form class="example-form">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-          <input matInput placeholder="Mobile Number">
+          <input matInput #customerNameInput="matInput"  [(ngModel)]="customer.name" placeholder="Customer Name" name="customerName"   type="text" autofocus>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Alternate Mobile">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-              <input matInput placeholder="Address">
-            </mat-form-field>
-           
-          <button mat-button (click)="onAdd(item)"  href="#"style="background-color:rgb(85, 61, 85);color:white ">Add Customer</button>
+          <input matInput [(ngModel)]="customer.mobile" type="text" placeholder="Mobile" name="mobile">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="customer.alternateMobile" type="text" placeholder="AlternateMobile" name="alternateMobile">
+        </mat-form-field>
+        <button mat-button (click)="onSubmit()" href="#" style="background-color:rgb(85, 61, 85);color:white ">Add Customer</button>
     </form>
   </div>
