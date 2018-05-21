@@ -120,7 +120,7 @@ import { SalesReportDetailsComponent } from './sales/sales-report-details/sales-
   HttpClientModule
   ],
   providers: [],
-  entryComponents:[ProductEditComponent,CustomerEditComponent,OrderEditComponent,SalesReportDetailsComponent],
+  entryComponents:[CustomerEditComponent,OrderEditComponent,SalesReportDetailsComponent,PrintComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

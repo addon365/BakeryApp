@@ -37,4 +37,8 @@
   .example-full-width {
     width: 100%;
   }
+  .nav ul li a:active{
+      color: aliceblue;
+      background-color: #553d55;
+  }
  

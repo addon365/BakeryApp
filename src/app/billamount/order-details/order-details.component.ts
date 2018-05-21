@@ -1,8 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { Component, OnInit, Input, Output, EventEmitter ,ViewChild, ElementRef } from '@angular/core';
+
 import { CustomerService } from '../../services/customer.service';
 import { SalesOrder } from '../../models/sales-order';
 import { Customer } from '../../models/customer';
 import { SalesOrderService } from '../../services/sales-order.service';
+import { PrintComponent } from '../../printpage/print/print.component';
+import { MatDialog } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { Utils } from '../../utils';
 
@@ -14,12 +18,16 @@ import { Utils } from '../../utils';
 })
 export class OrderDetailsComponent implements OnInit {
 
+  isPopupOpened=true;
   @Output() orderCompleted = new EventEmitter<boolean>();
   @Input() public salesOrder: SalesOrder;
   constructor(
     private customerService: CustomerService,
     private salesOrderService: SalesOrderService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dialog?: MatDialog,
+    ) { }
+
 
   ngOnInit() {
 
@@ -42,5 +50,19 @@ export class OrderDetailsComponent implements OnInit {
           duration: 2000
         });
       });
+      this.isPopupOpened = true;
+
+      const dialogRef = this.dialog.open(PrintComponent, {
+       data:{}
+      });
+    
+    
+      dialogRef.afterClosed().subscribe(result => {
+        this.isPopupOpened = false;
+      });
+    }
+    
   }
-}
+  
+ 
+
