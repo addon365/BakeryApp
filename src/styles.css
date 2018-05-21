@@ -12,6 +12,10 @@
 .mat-card-title{
     margin-bottom: 0px;
 }
+.main-shop{
+    color: aliceblue;
+    background-color: #553d55;
+}
 .toolbar-spacer{
     flex: 1 1 auto;
 }
