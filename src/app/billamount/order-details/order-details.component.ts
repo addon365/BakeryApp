@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, Output, EventEmitter ,ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 import { CustomerService } from '../../services/customer.service';
 import { SalesOrder } from '../../models/sales-order';
@@ -17,7 +17,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  isPopupOpened=true;
+  isPopupOpened = true;
   @Output() orderCompleted = new EventEmitter<boolean>();
   @Input() public salesOrder: SalesOrder;
   constructor(
@@ -25,7 +25,7 @@ export class OrderDetailsComponent implements OnInit {
     private salesOrderService: SalesOrderService,
     private snackBar: MatSnackBar,
     private dialog?: MatDialog,
-    ) { }
+  ) { }
 
 
   ngOnInit() {
@@ -41,25 +41,26 @@ export class OrderDetailsComponent implements OnInit {
   }
   onSubmit() {
     this.salesOrderService.addSalesOrder(this.salesOrder)
-      .subscribe((response: any) => {
+      .subscribe((response: SalesOrder) => {
+        this.isPopupOpened = true;
+
+        const dialogRef = this.dialog.open(PrintComponent, {
+          data: response
+        });
+
+
+        dialogRef.afterClosed().subscribe(result => {
+          this.isPopupOpened = false;
+        });
+
         this.orderCompleted.emit(true);
         this.snackBar.open("Order Submitted Successfull", "ok", {
           duration: 2000
         });
       });
-      this.isPopupOpened = true;
 
-      const dialogRef = this.dialog.open(PrintComponent, {
-       data:{}
-      });
-    
-    
-      dialogRef.afterClosed().subscribe(result => {
-        this.isPopupOpened = false;
-      });
-    }
-    
   }
-  
- 
+}
+
+
 

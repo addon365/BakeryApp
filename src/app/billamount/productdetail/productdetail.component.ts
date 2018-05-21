@@ -25,7 +25,7 @@ export class ProductdetailComponent implements OnInit {
   @Output() addToCart = new EventEmitter<any>();
   @ViewChild('quantityfocus') searchinput: ElementRef;
   @HostListener('document:keyup', ['$event'])
-  focus(event: KeyboardEvent): void {
+  keydown(event: KeyboardEvent): void {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode === 13) {
       this.searchinput.nativeElement.focus();
