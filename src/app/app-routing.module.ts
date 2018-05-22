@@ -11,9 +11,14 @@ import { BillRootComponent } from './billamount/bill-root/bill-root.component';
 import { OrderlistComponent } from './orders/orderlist/orderlist.component';
 import { PrintComponent } from './printpage/print/print.component';
 import { SalesReportComponent } from './sales/sales-report/sales-report.component';
+import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [
+    {
+        path: 'http://localhost:8080/bakery-application/',
+        component: AppComponent
+    },
     {
         path: 'product',
         component: ProductComponent
@@ -50,5 +55,5 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents = [PageNotFoundComponent
+export const routingcomponents = [PageNotFoundComponent,AppComponent
 ]
