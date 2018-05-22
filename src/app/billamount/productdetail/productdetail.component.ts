@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { OrderView } from '../../models/order-view';
 import { Time } from '@angular/common';
@@ -10,6 +10,7 @@ import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
+import { MatInput } from '@angular/material';
 
 @Component({
   selector: 'app-productdetail',
@@ -23,34 +24,48 @@ export class ProductdetailComponent implements OnInit {
   public filteredOptions: Observable<Product[]>;
   formControl: FormControl = new FormControl();
   @Output() addToCart = new EventEmitter<any>();
-  @ViewChild('quantityfocus') searchinput: ElementRef;
-  @HostListener('document:keyup', ['$event'])
-  keydown(event: KeyboardEvent): void {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode === 13) {
-      this.searchinput.nativeElement.focus();
-    }
-  }
+  @ViewChild('itemNameInput') itemName: MatInput;
+  @ViewChild('itemquantityInput') itemQuantity: MatInput;
+  @ViewChild('quantitySearch') searchinput1 :ElementRef;
+  @ViewChild('inputSearch') inputSearch: ElementRef;
+
+ // @HostListener('document:keyup', ['$event'])
+  //keyup(event: KeyboardEvent): void {
+    //const charCode = (event.which) ? event.which : event.keyCode;
+    //if (charCode === 13) {
+     //this.searchinput.nativeElement.focus();
+    
+   // }
+  //}
 
   constructor(private customerService: CustomerService,
     private productService: ProductService) { }
-
+    
   ngOnInit() {
+    
     this.productService.getAll()
       .subscribe((products: Array<Product>) => {
         this.products = products;
+        
+       
       });
     this.filteredOptions = this.formControl.valueChanges.pipe(
       startWith(''),
       map(val => this.filter(val))
     );
+    
   }
   filter(val: any): any[] {
     return this.products.filter(product => product.name.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
-  
+  public search=null;
   onAdd(item: any) {
+    
     this.addToCart.emit(item);
+    this.itemName.focus();
+    const inputsearch = <HTMLInputElement>this.inputSearch.nativeElement;
+    inputsearch.select();
+   
 
     //this.searchinput.nativeElement.focus();
   }
@@ -63,6 +78,10 @@ export class ProductdetailComponent implements OnInit {
       1,
       null
     );
+    
+  }
+  Keydown(event: KeyboardEvent){
+    console.log(this.itemQuantity.focus());
   }
 
 }
