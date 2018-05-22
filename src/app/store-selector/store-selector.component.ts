@@ -10,8 +10,8 @@ import { Utils } from '../utils';
   styleUrls: ['./store-selector.component.css']
 })
 export class StoreSelectorComponent implements OnInit {
-  private shops: Array<Shop> = null;
-  private selectedShopName: string = "";
+  public shops: Array<Shop> = null;
+  public selectedShopName: string = "";
   @Output() chooseShop = new EventEmitter();
   constructor(
     private generalServices: GeneralService,

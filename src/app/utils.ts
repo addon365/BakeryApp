@@ -20,23 +20,21 @@ const EDIT_ACTION = "edit";
 export class Utils {
     public static orderStatuses: Array<OrderStatus> = null;
     public static SHOP_KEY = "Shop";
-    public static PENDING = 8;
-    public static DELIVERED = 5;
-    public static IN_PRODUCTION = 6;
-    public static IN_STOCK = 7;
+    public static PENDING = "Pending";
+    public static DELIVERED = "Delivered";
+    public static IN_PRODUCTION = "InProduction";
+    public static IN_STOCK = "InStock";
 
 
     public static getOrderStatuses(): Array<OrderStatus> {
         return this.orderStatuses;
     }
-    public static getOrderStatus(statusId: number): OrderStatus {
-        if (this.orderStatuses == null)
-            return new OrderStatus(Utils.PENDING, "PENDING", "P");
+    public static getOrderStatus(statusName: string): OrderStatus {
         this.orderStatuses.forEach(element => {
-            if (element.id == statusId)
+            if (element.name == statusName)
                 return element;
         });
-        return new OrderStatus(Utils.PENDING, "PENDING", "P");
+        return null;
     }
     public static getStatusesURL() {
         return ORDER_URL + STATUS_ACTION;

@@ -13,7 +13,7 @@ import { StoreSelectorComponent } from '../store-selector/store-selector.compone
 
 export class MainComponent implements OnInit {
   title = 'bakery app';
-  private hasLoggedIn: boolean = false;
+  public hasLoggedIn: boolean = false;
   private shop: Shop;
   constructor(public dialog: MatDialog) { }
 

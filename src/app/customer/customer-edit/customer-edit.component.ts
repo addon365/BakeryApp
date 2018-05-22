@@ -12,12 +12,15 @@ export class CustomerEditComponent implements OnInit {
   public productForm: FormGroup;
   constructor(private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CustomerEditComponent>,
-    ) { }
+  ) { }
   onNoClick(): void {
     this.dialogRef.close();
-   }
+  }
 
   ngOnInit() {
+  }
+  onSubmit() {
+
   }
 
 }
