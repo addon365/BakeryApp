@@ -28,13 +28,20 @@ export class PrintComponent implements OnInit {
     let printContents, popupWin;
     printContents = document.getElementById('printsection').innerHTML;
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-    popupWin.document.open();
+    popupWin.document.open('', 'printsection', 'height=10mm,width=72mm');
     popupWin.document.write(`
       <html>
         <head>
-          <title>Print tab</title>
+        <link rel="stylesheet" href="../paper.css">
           <style>
-          //........Customized style.......
+@page{
+ size:100mm 300mm
+}
+       
+        .text-center{
+          text-align:center;
+        }
+       
           </style>
         </head>
     <body onload="window.print();window.close()">${printContents}</body>

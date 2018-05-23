@@ -1,44 +1,48 @@
 
+ 
+<div class="col-md-12" id="printsection">
+    <h2 class="text-center"> Invoice Bill</h2>
+    
+      
+  <div class="table-responsive">
+      <span><strong> Bill No: {{data.id}}&nbsp;&nbsp;&nbsp;&nbsp; </strong></span><br>
+         <span> <strong>Customer Name: {{data.customer.name}}</strong></span>
+    <table class="table ">
+        
 
-    <div class="col-md-12" id="printsection">
+         
+<tbody>
+      <tr>
+        <td>Name</td>
+        <td>Price</td>
+      
+        <td>Quantity</td>
        
-           <table class="table">
-<h2>Invoice Bill</h2>
-            <tbody>
-              <tr>
-<th>Bill Number: {{data.id}}</th>
-<th></th>
-<th></th>
-<th>Customer Name: {{data.customer.name}}
+        <td>Total</td>
+      </tr>
+   
+      <tr *ngFor="let item of data.orderItems">
+        <td>{{item.product.name}}</td>
+        <td>{{item.price}}</td>
+        
+        <td>{{item.quantity}}</td>
+       
+        <td>{{item.price*item.quantity}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+       
+        <td>{{data.total}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
 
-</th>
-              </tr>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-              <tr *ngFor="let item of data.orderItems">
-                <td>{{item.product.name}}</td>
-                <td>{{item.price}}</td>
-                <td>{{item.quantity}}</td>
-                <td>{{item.price*item.quantity}}</td>
-              </tr>
-              
-                <tr>
+<div class="col-md-12">
+  <button mat-button (click)="print()" style="background-color:rgb(85, 61, 85);color:white ">Print</button>
 
-                </tr>
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th>Total</th>
-                  <th>{{data.total}}</th>
-                </tr>
-            </tbody>
-           </table>
-          </div>
-          <div class="col-md-12">
-           <button mat-button (click)="print()" style="background-color:rgb(85, 61, 85);color:white ">Print</button>
-          
-          </div>
+</div>
+
