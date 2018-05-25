@@ -47,4 +47,38 @@ body { padding-top: 20px; }
       color: aliceblue;
       background-color: #553d55;
   }
- 
+  .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+    color:#fff;
+    background-color: #553d55;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+    color:#fff;
+    background-color: #553d55;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{
+    color:#fff;
+    background-color: #553d55;
+}
+ @media (max-width:1200px){
+    .navbar-default{
+        background-color:transparent;
+        position: relative;
+    bottom: 56px;
+    }
+    .main-shop1{
+position: relative;
+bottom: 65px;
+    }
+    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+        color:#fff;
+        background-color: #553d55;
+    }
+    .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+        color:#fff;
+        background-color: #553d55;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{
+        color:#fff;
+        background-color: #553d55;
+    }
+ }

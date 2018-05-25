@@ -3,13 +3,11 @@
     margin-top: 20px;
 }
 .button-card{
-    margin: 40px;
-}
-.b1-card{
-    margin-left: 15px;
+    margin-top: 20px;
+    text-align: center;
     color: #ddd;
-    
 }
+
 .item-cart{
     padding-left: 0px;
 }

@@ -28,20 +28,36 @@ export class PrintComponent implements OnInit {
     let printContents, popupWin;
     printContents = document.getElementById('printsection').innerHTML;
     popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-    popupWin.document.open('', 'printsection', 'height=10mm,width=72mm');
+    popupWin.document.open();
     popupWin.document.write(`
       <html>
         <head>
         <link rel="stylesheet" href="../paper.css">
           <style>
-@page{
- size:100mm 300mm
-}
+          html, body {
+          
+            display: block; 
+            font-family: "Calibri";
+            margin: 0;
+            font-size:auto;
+        }
+        footer {page-break-after: always;}
+          @page{
+          size:75mm 20mm;
+
+          }
        
         .text-center{
           text-align:center;
         }
-       
+        .center{
+          text-align:center;
+        }
+        .table {
+          width: 100%;
+          max-width: 100%;
+          margin-bottom: 20px;
+      }
           </style>
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
