@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { Product } from '../../models/product';
 import { MatSnackBar } from '@angular/material';
 import { OrderItem } from '../../models/order-item';
@@ -16,7 +16,16 @@ export class CartComponent implements OnInit {
   @Output() onOrder = new EventEmitter<any>();
   @Output() closeBill = new EventEmitter<boolean>();
   showOrderItems= false;
-
+  @ViewChild('Order') order: ElementRef;
+ @HostListener('document:keyup', ['$event'])
+  keyup(event: KeyboardEvent): void {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if ( event.ctrlKey && charCode === 13) {
+      event.preventDefault();
+     this.onOrderClick();
+    
+    }
+  }
   constructor(private snackBar: MatSnackBar,
     private salesOrderService: SalesOrderService) { }
 

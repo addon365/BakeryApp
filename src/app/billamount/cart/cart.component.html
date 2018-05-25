@@ -1,6 +1,19 @@
-<div class="col-md-12">
+
   <h2>Cart Items</h2>
   <h3>Total:{{salesOrder.total}}</h3>
+  <div class="button-card">
+     
+     
+          <div class="col-md-12">
+        <button mat-button style="background-color:  #553d55;margin-right: 15px;" (click)="onOrderClick()" >Order</button>
+      
+    
+       
+        <button mat-button style="background-color:  #553d55;" (click)="onCheckOut()">CheckOut</button>
+      </div>
+   
+    </div>
+    <div class="col-md-12">
   <div *ngIf="showOrderItems">
      <mat-card *ngFor="let item of salesOrder.orderItems">
     <table class="table">
@@ -17,18 +30,7 @@
     </mat-card>
 
 
-    <div class="button-card">
-     
-      <div class="b1-card">
-          <div class="col-md-12">
-        <button mat-button style="background-color:  #553d55;margin-right: 15px;" (click)="onOrderClick()">Order</button>
-      
     
-       
-        <button mat-button style="background-color:  #553d55;" (click)="onCheckOut()">CheckOut</button>
-      </div>
-    </div>
-    </div>
  
    
   </div>
