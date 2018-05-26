@@ -9,13 +9,19 @@ import { Product } from '../models/product';
 })
 export class ProductEditComponent implements OnInit {
 
-  @Input() item: Product = null;  
-  constructor(
-  ) { }
-
+  //@Input() item: Product = null;  
+  
+  constructor(private _formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<ProductEditComponent>,
+   
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  
+    onNoClick(): void {
+      this.dialogRef.close(); 
+     }
 
   ngOnInit() {
-
+   
 
   }
   onSubmit() {

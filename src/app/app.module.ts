@@ -117,10 +117,10 @@ import { SalesReportDetailsComponent } from './sales/sales-report-details/sales-
   MatNativeDateModule,
   MatDatepickerModule,
   BrowserAnimationsModule,
-  HttpClientModule
+  HttpClientModule,
   ],
   providers: [],
-  entryComponents:[CustomerEditComponent,OrderEditComponent,SalesReportDetailsComponent,PrintComponent],
+  entryComponents:[CustomerEditComponent,ProductEditComponent,OrderEditComponent,SalesReportDetailsComponent,PrintComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

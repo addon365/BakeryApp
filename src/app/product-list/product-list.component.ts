@@ -10,7 +10,7 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
- 
+  isPopupOpened = true;
   displayedColumns = ['id', 'name', 'quantity', 'price','actionsColumn'];
   @Input() public selectedItem:Product;
   public products: Array<Product> = [];
@@ -31,11 +31,24 @@ export class ProductListComponent implements OnInit {
       });
   }
   editproduct(product:Product) {
-   this.selectedItem=product;
+    this.isPopupOpened = true;
+    
+     const dialogRef = this.dialog.open(ProductEditComponent, {
+     data: product
+     });
+ 
+ 
+     dialogRef.afterClosed().subscribe(result => {
+       this.isPopupOpened = false;
+     });
+   //this.selectedItem=product;
   }
  
   deleteproduct(id: number) {
-    
+    console.log(id);
+    console.log(this.products.length);
+    const Product = this.products.findIndex(c => c.id === id);
+    this.products.splice(Product, 1);
       }
     }
 
