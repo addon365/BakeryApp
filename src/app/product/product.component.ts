@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
     public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.itemName.focus();
   }
   onSubmit() {
 

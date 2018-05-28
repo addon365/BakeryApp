@@ -6,7 +6,7 @@ import { SalesOrder } from '../../models/sales-order';
 import { Customer } from '../../models/customer';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { PrintComponent } from '../../printpage/print/print.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatInput } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { Utils } from '../../utils';
 
@@ -17,7 +17,7 @@ import { Utils } from '../../utils';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-
+  @ViewChild('mobileinput') mobileinput: MatInput;
   isPopupOpened = true;
   @Output() orderCompleted = new EventEmitter<boolean>();
   @Input() public salesOrder: SalesOrder;
@@ -30,7 +30,7 @@ export class OrderDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-
+//this.mobileinput.focus();
   }
   findCustomer() {
     this.customerService.findByMobile(this.salesOrder.customer.mobile)

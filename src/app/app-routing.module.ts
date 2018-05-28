@@ -16,8 +16,8 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
     {
-        path: 'http://localhost:8080/bakery-application/',
-        component: AppComponent
+        path: 'http://localhost:4200/bakery-application/',redirectTo:'/bill',pathMatch:'full'
+       
     },
     {
         path: 'product',

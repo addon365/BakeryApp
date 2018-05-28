@@ -11,10 +11,11 @@ import { CustomerService } from '../../services/customer.service';
 export class CustomerAddComponent implements OnInit {
   @ViewChild('customerNameInput') customerName: MatInput;
   public customer: Customer
-    = new Customer(-1, "", "5698", '57899');
+    = new Customer(-1, "", "", '');
   constructor(private customerservice:CustomerService,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.customerName.focus();
   } 
   onSubmit() {
 

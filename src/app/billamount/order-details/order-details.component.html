@@ -1,45 +1,75 @@
 <div *ngIf="salesOrder">
     <h4>Order Details</h4>
+    
     <table class="example-form" cellspacing="0">
       <tr>
         <td>
+            <form #orderproduct="ngForm">
           <div class="col">
           <div class="row">
             <div class="col-md-9">
+               
             <mat-form-field class="example-full-width">
               <span matPrefix>+91 &nbsp;</span>
-              <input [(ngModel)]="salesOrder.customer.mobile" type="tel" matInput placeholder="Mobile">
+              <input [(ngModel)]="salesOrder.customer.mobile" name="salesOrder.customer.mobile" type="tel" minlength="10" maxlength="10" pattern="[0-9]*"  #mobileinput="matInput" #mobile="ngModel" matInput placeholder="Mobile" required autofocus>
               <mat-icon matSuffix>mode_edit</mat-icon>
+             
             </mat-form-field>
+            <span style="color: red;" *ngIf="mobile.touched && !mobile.valid">
+                <div *ngIf="mobile.errors.required">*mobile number is required*</div>
+                <div *ngIf="mobile.errors.minlength">*mobile number should be 10 number*</div>
+                <div *ngIf="mobile.errors.pattern">*mobile number invaild*</div>
+              </span>
+            
+            
           </div>
           <div class="col-md-3">
             <button mat-button href="#" (click)="findCustomer()" style="background-color:rgb(85, 61, 85);color:white">Find Customer</button>
           </div>
         </div>
         </div>
+      
           <mat-form-field class="example-full-width">
-            <input [(ngModel)]="salesOrder.customer.name" matInput placeholder="First name">
+            <input required minlength="3" maxlength="10" name="salesOrder.customer.name" pattern="[a-zA-Z][a-zA-Z]+" [(ngModel)]="salesOrder.customer.name" #firstName="ngModel" id="firstName" matInput placeholder="First name">
+          
           </mat-form-field>
+          <span style="color: red;" *ngIf="firstName.touched && !firstName.valid">
+              <div *ngIf="firstName.errors.required">*first name is required*</div>
+              <div *ngIf="firstName.errors.minlength">*first name should be 3 character*</div>
+              <div *ngIf="firstName.errors.pattern">*first name invaild*</div>
+            </span>
+        
+      
           <mat-form-field class="example-full-width">
-              <input [(ngModel)]="name" matInput placeholder="Advanced">
+              <input [(ngModel)]="Advanced" type="tel" name="Advanced" #advanced="ngModel" min="2" pattern="[0-9]*" matInput placeholder="Advanced" required>
+              <span matPrefix>₹&nbsp;</span>
+              <span matSuffix>.00</span>
+             
             </mat-form-field>
-  
+            <span style="color: red;" *ngIf="advanced.touched && !advanced.valid">
+                <div *ngIf="advanced.errors.required">*Advance is required*</div>
+                <div *ngIf="advanced.errors.pattern">*Advance invaild*</div>
+                <div *ngIf="advanced.errors.min">*Advance*</div>
+              </span>
           <mat-form-field class="example-full-width">
-            <input [(ngModel)]="salesOrder.expectedDate" matInput [matDatepicker]="picker" placeholder="Excepted date:(MM/DD/YYYY)">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <input [(ngModel)]="salesOrder.expectedDate" name="salesOrder.expectedDate" matInput [matDatepicker]="dp3" placeholder="Excepted date:(MM/DD/YYYY)" disabled required>
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
           </mat-form-field>
           
             <mat-form-field  class="example-full-width">
-              <input [(ngModel)]="salesOrder.expectedTime" matInput placeholder="Excepted hours">
+              <input [(ngModel)]="salesOrder.expectedTime" name="salesOrder.expectedTime" type="time"  #time="ngModel" matInput placeholder="Excepted hours:(HH:MM)" required>
             </mat-form-field>
-          
-            <button mat-button (click)="onSubmit()"  (keydown.enter)="onKeydown($event)" style="background-color:rgb(85, 61, 85);color:white ">Submit</button>
-
+            <span style="color: red;" *ngIf="time.touched && !time.valid">
+                <div *ngIf="time.errors.required">*time is required*</div>
+                
+              </span>
+            <button mat-button (click)="onSubmit()" [disabled]="orderproduct.invalid"  (keydown.enter)="onKeydown($event)" style="background-color:rgb(85, 61, 85);color:white ">Submit</button>
+          </form>
         </td>
       </tr>
     </table>
-  
+
   
   </div>
   
