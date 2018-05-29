@@ -40,7 +40,7 @@ export class PrintComponent implements OnInit {
           
             display: block; 
             font-family: "Calibri";
-            margin: 0;
+            margin:0px;
             font-size:auto;
         }
        
