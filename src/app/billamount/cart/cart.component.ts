@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
  @HostListener('document:keyup', ['$event'])
   keyup(event: KeyboardEvent): void {
     const charCode = (event.which) ? event.which : event.keyCode;
-    if ( event.ctrlKey && charCode === 13) {
+    if ( event.altKey && charCode===79) {
       event.preventDefault();
      this.onOrderClick();
     

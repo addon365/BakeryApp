@@ -1,4 +1,4 @@
-<div class="col-md-10">
+<div class="col-md-8">
     <div class="example-container mat-elevation-z8">
         <div class="example-header">
           <mat-form-field>
@@ -35,8 +35,8 @@
             <ng-container matColumnDef="actioncolumn">
               <th mat-header-cell *matHeaderCellDef>  </th>
               <td mat-cell *matCellDef="let element">
-                  <mat-icon (click)="editcustomer(element.id)" class="cusor">edit</mat-icon> &nbsp;&nbsp;&nbsp; 
-                 <mat-icon (click)="deletecustomer(element.id)" class="cusor">delete</mat-icon>
+                  <mat-icon (click)="editcustomer(element)" class="cusor">edit</mat-icon> &nbsp;&nbsp;&nbsp; 
+                 <mat-icon (click)="deletecustomer(element)" class="cusor">delete</mat-icon>
                     </td>
             </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
