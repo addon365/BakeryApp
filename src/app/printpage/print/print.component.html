@@ -1,18 +1,15 @@
 
- 
+
 <div class="col-md-12" id="printsection">
-    <footer>
+   <span class="none"> {{today | date:'short'}}</span>
     <h2 class="text-center"> Invoice Bill</h2>
+    <div><strong> Bill Number: {{data.id}}&nbsp; </strong></div>
+    <div class="cname"> <strong>Customer Name: {{data.customer.name}}</strong></div>
     
-    <span><strong> Bill Number: {{data.id}}&nbsp; </strong></span><br>
-    <span class="cname"> <strong>Customer Name: {{data.customer.name}}</strong></span>
   <div class="table-responsive">
       
     <table class="table ">
-        
-       
-         
-<tbody>
+       <tbody>
       <tr>
         <td><b>Name</b></td>
         <td><b>Price</b></td>
@@ -40,13 +37,13 @@
     </tbody>
     </table>
   </div>
-</footer>
+
 </div>
 
 
 
 <div class="col-md-12">
-  <button mat-button (click)="print()" style="background-color:rgb(85, 61, 85);color:white ">Print</button>
-
+  <button mat-button (click)="print()"  style="background-color:rgb(85, 61, 85);color:white ">Print</button>
+ 
 </div>
 
