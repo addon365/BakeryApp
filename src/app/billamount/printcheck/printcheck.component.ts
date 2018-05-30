@@ -1,20 +1,18 @@
-import { Component, OnInit, ViewChild, ElementRef, inject, Inject } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { SalesOrder } from '../../models/sales-order';
 
-
-
 @Component({
-  selector: 'app-print',
-  templateUrl: './print.component.html',
-  styleUrls: ['./print.component.css']
+  selector: 'app-printcheck',
+  templateUrl: './printcheck.component.html',
+  styleUrls: ['./printcheck.component.css']
 })
-export class PrintComponent implements OnInit {
+export class PrintcheckComponent implements OnInit {
+
   today: number = Date.now();
   
   constructor(
-    private dialogRef: MatDialogRef<PrintComponent>,
+    private dialogRef: MatDialogRef<PrintcheckComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SalesOrder
     ) {
       
@@ -69,5 +67,4 @@ export class PrintComponent implements OnInit {
     );
     popupWin.document.close();
 } 
- 
 }
