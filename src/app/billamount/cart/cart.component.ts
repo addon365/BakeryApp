@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
  
   onCheckOut() {
     this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.DELIVERED);
-    this.salesOrder.customer = null;
+   // this.salesOrder.customer = null;
     this.salesOrderService.addSalesOrder(this.salesOrder)
       .subscribe((response: SalesOrder) => {
         this.isPopupOpened = true;
