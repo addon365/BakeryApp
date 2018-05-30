@@ -14,7 +14,7 @@
         <span style="color: red;" *ngIf="mobile.touched && !mobile.valid">
             <div *ngIf="mobile.errors.required">*field is required*</div>
             <div *ngIf="mobile.errors.pattern">*invalid number*</div>
-            <div *ngIf="mobile.errors.minlength">*must be a 10 letter*</div>
+            <div *ngIf="mobile.errors.minlength">*must be a 10 number*</div>
            </span>
         <mat-form-field class="example-full-width">
           <input matInput [(ngModel)]="customer.alternateMobile" type="text"  placeholder="AlternateMobile" minlength="10" maxlength="10" #altermobile="ngModel" name="alternateMobile">

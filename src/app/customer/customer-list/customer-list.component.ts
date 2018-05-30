@@ -22,21 +22,8 @@ export class CustomerListComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   constructor( private customerservice:CustomerService , private dialog?: MatDialog) { }
-  editcustomer(id: number) {
-    this.isPopupOpened = true;
   
-    const dialogRef = this.dialog.open(CustomerEditComponent, {
-     data:{}
-    });
-
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.isPopupOpened = false;
-    });
-  }
-  deletecustomer(id:number){
-console.log(id)
-  }
+  
 
   ngOnInit() {
     this.customerservice.getAll()
@@ -45,5 +32,19 @@ console.log(id)
         this.dataSource = new MatTableDataSource(this.customers);
       });
   }
+  editcustomer(customer:Customer) {
+    this.isPopupOpened = true;
+  
+    const dialogRef = this.dialog.open(CustomerEditComponent, {
+     data:customer
+    });
 
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isPopupOpened = false;
+    });
+  }
+  deletecustomer(id:number){
+    console.log(id)
+      }
 }
