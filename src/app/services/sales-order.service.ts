@@ -9,7 +9,7 @@ import { SalesOrder } from '../models/sales-order';
 export class SalesOrderService {
 
   constructor(private httpClient: HttpClient) { }
-  public getAll() {
+  public getOrders() {
     return this.httpClient.get(`${Utils.getOrderURL()}`);
   }
   public getSalesReport() {

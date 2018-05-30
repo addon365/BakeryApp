@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from '../models/product';
+import { ProductService } from '../services/product.service';
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
@@ -9,22 +10,25 @@ import { Product } from '../models/product';
 })
 export class ProductEditComponent implements OnInit {
 
-  //@Input() item: Product = null;  
-  
+  item: Product = null;
+
   constructor(private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<ProductEditComponent>,
-   
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-  
-    onNoClick(): void {
-      this.dialogRef.close(); 
-     }
+    private productService: ProductService,
+    @Inject(MAT_DIALOG_DATA) public data: Product) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
-   
-
+    this.item = this.data;
   }
   onSubmit() {
-
+    
+    this.productService.addProduct(this.item)
+      .subscribe((response: Product) => {
+        this.dialogRef.close();
+      });
   }
 }
