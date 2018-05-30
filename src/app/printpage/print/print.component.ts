@@ -42,13 +42,14 @@ export class PrintComponent implements OnInit {
           
             display: block; 
             font-family: "Calibri";
-            margin:0px;
+            margin: 0px;
             font-size:auto;
         }
        
-         @page{
-           size:80mm 20mm
-         }
+          @page{
+          size:80mm 20mm;
+         
+          }
        
         .text-center{
           text-align:center;

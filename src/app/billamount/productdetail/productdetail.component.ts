@@ -26,19 +26,27 @@ export class ProductdetailComponent implements OnInit {
   @Output() addToCart = new EventEmitter<any>();
   @ViewChild('itemNameInput') itemName: MatInput;
   @ViewChild('itemquantityInput') itemQuantity: MatInput;
+  @ViewChild('quantitySearch') searchinput1 :ElementRef;
   @ViewChild('inputSearch') inputSearch: ElementRef;
 
- 
+ // @HostListener('document:keyup', ['$event'])
+  //keyup(event: KeyboardEvent): void {
+    //const charCode = (event.which) ? event.which : event.keyCode;
+    //if (charCode === 13) {
+     //this.searchinput.nativeElement.focus();
+    
+   // }
+  //}
 
   constructor(private customerService: CustomerService,
     private productService: ProductService) { }
     
   ngOnInit() {
-  
+    
     this.productService.getAll()
       .subscribe((products: Array<Product>) => {
         this.products = products;
-        this.itemName.focus();
+        
        
       });
     this.filteredOptions = this.formControl.valueChanges.pipe(
@@ -59,7 +67,7 @@ export class ProductdetailComponent implements OnInit {
     inputsearch.select();
    
 
-   
+    //this.searchinput.nativeElement.focus();
   }
 
   onSelectionChange(product: Product) {
@@ -72,5 +80,8 @@ export class ProductdetailComponent implements OnInit {
     );
     
   }
-  
+  Keydown(event: KeyboardEvent){
+    console.log(this.itemQuantity.focus());
+  }
+
 }

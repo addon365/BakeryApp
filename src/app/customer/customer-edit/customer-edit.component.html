@@ -9,13 +9,13 @@
   
   <mat-card-content>
     
-      <form>
+      <form  (submit)="onSubmit()">
         <div class="form-group">
           <div class="col-md-12">
             <div class="col-md-6">
               <label>Customer Name</label>
               <mat-form-field class="example-full-width">
-                  <input matInput [value]="data.name" placeholder="Name">
+                  <input matInput placeholder="Name">
                 </mat-form-field>
             </div>
           </div>
@@ -23,7 +23,7 @@
             <div class="col-md-6">
               <label>Mobile Number</label>
               <mat-form-field class="example-full-width">
-                  <input matInput [value]="data.mobile" placeholder="Mobile Number">
+                  <input matInput placeholder="Mobile Number">
                 </mat-form-field>
             </div>
           </div>
@@ -31,11 +31,18 @@
             <div class="col-md-6">
               <label>Alternate Mobile</label>
               <mat-form-field class="example-full-width">
-                  <input matInput [value]="data.alternateMobile" placeholder="Alternate Mobile">
+                  <input matInput placeholder="Alternate Mobile">
                 </mat-form-field>
             </div>
           </div>
-         
+          <div class="col-md-12">
+              <div class="col-md-6">
+                <label>Address</label>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Address">
+                  </mat-form-field>
+              </div>
+            </div>
           </div>
          
           <div class="col-md-12">

@@ -22,21 +22,11 @@ export class CustomerListComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   constructor( private customerservice:CustomerService , private dialog?: MatDialog) { }
-  
-  
-
-  ngOnInit() {
-    this.customerservice.getAll()
-      .subscribe((resultData: Array<Customer>) => {
-        this.customers = resultData;
-        this.dataSource = new MatTableDataSource(this.customers);
-      });
-  }
-  editcustomer(customer:Customer) {
+  editcustomer(id: number) {
     this.isPopupOpened = true;
   
     const dialogRef = this.dialog.open(CustomerEditComponent, {
-     data:customer
+     data:{}
     });
 
 
@@ -45,6 +35,15 @@ export class CustomerListComponent implements OnInit {
     });
   }
   deletecustomer(id:number){
-    console.log(id)
-      }
+console.log(id)
+  }
+
+  ngOnInit() {
+    this.customerservice.getAll()
+      .subscribe((resultData: Array<Customer>) => {
+        this.customers = resultData;
+        this.dataSource = new MatTableDataSource(this.customers);
+      });
+  }
+
 }

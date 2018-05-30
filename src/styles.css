@@ -60,10 +60,6 @@ body { padding-top: 20px; }
     color:#fff;
     background-color: #553d55;
 }
-.navbar-default .navbar-nav>li>a:active{
-    color:#fff;
-    background-color: #553d55;
-}
  @media (max-width:1200px){
     .navbar-default{
         background-color:transparent;

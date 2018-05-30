@@ -63,7 +63,7 @@
                 <div *ngIf="time.errors.required">*time is required*</div>
                 
               </span>
-            <button mat-button (click)="onSubmit()" [disabled]="orderproduct.invalid" style="background-color:rgb(85, 61, 85);color:white ">Submit</button>
+            <button mat-button (click)="onSubmit()" [disabled]="orderproduct.invalid"  (keydown.enter)="onKeydown($event)" style="background-color:rgb(85, 61, 85);color:white ">Submit</button>
           </form>
         </td>
       </tr>
