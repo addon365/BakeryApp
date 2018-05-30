@@ -44,7 +44,9 @@ export class PrintComponent implements OnInit {
             font-size:auto;
         }
        
-         
+         @page{
+           size:80mm 20mm
+         }
        
         .text-center{
           text-align:center;
