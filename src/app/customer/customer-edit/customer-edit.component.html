@@ -15,7 +15,7 @@
             <div class="col-md-6">
               <label>Customer Name</label>
               <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Name">
+                  <input matInput [(ngModel)]="data.name" [value]="customername" name="customername">
                 </mat-form-field>
             </div>
           </div>
@@ -23,7 +23,7 @@
             <div class="col-md-6">
               <label>Mobile Number</label>
               <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Mobile Number">
+                  <input matInput [(ngModel)]="data.mobile" [value]="mobile" name="mobile" maxlength="10" >
                 </mat-form-field>
             </div>
           </div>
@@ -31,23 +31,16 @@
             <div class="col-md-6">
               <label>Alternate Mobile</label>
               <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Alternate Mobile">
+                  <input matInput [(ngModel)]="data.alternateMobile" [value]="alternateMobile" maxlength="10" name="alternatemobile">
                 </mat-form-field>
             </div>
           </div>
-          <div class="col-md-12">
-              <div class="col-md-6">
-                <label>Address</label>
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Address">
-                  </mat-form-field>
-              </div>
-            </div>
+        
           </div>
          
           <div class="col-md-12">
             <div class="col-md-3">
-            <button type="submit" class="btn btn-success btn-save">
+            <button type="submit" (click)="onSubmit()" class="btn btn-success btn-save">
             
               <mat-icon>save</mat-icon>
             </button>

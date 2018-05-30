@@ -27,4 +27,7 @@ export class CustomerService {
    public addCustomer(customer: Customer) {
     return this.httpClient.post(`${Utils.addCustomerURL()}`, customer);
   }
+  editCustomer(customer: Customer) {
+    return this.httpClient.post(`${Utils.editCustomerURL()}`, customer);
+  }
 }

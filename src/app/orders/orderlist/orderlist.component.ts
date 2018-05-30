@@ -44,8 +44,6 @@ export class OrderlistComponent implements OnInit {
       this.isPopupOpened = false;
     });
   }
-  deletecustomer(id: number) {
-    console.log(id)
-  }
+ 
 
 }

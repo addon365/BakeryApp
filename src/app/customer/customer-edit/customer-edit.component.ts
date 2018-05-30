@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-customer-edit',
@@ -11,7 +12,7 @@ export class CustomerEditComponent implements OnInit {
 
   public productForm: FormGroup;
   constructor(private _formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<CustomerEditComponent>,
+    private dialogRef: MatDialogRef<CustomerEditComponent>,private customerService: CustomerService, @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
   onNoClick(): void {
     this.dialogRef.close();
@@ -20,7 +21,10 @@ export class CustomerEditComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
-
+    this.customerService.editCustomer(this.data)
+    .subscribe((response) => {
+      this.dialogRef.close();
+    });
   }
 
 }

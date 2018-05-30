@@ -22,28 +22,28 @@ export class CustomerListComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   constructor( private customerservice:CustomerService , private dialog?: MatDialog) { }
-  editcustomer(id: number) {
+  
+  
+
+  ngOnInit() {
+    this.customerservice.getAll()
+      .subscribe((resultData: Array<Customer>) => {
+        
+        this.customers = resultData;
+        this.dataSource = new MatTableDataSource(this.customers);
+      });
+  }
+  editcustomer(customer:Customer) {
     this.isPopupOpened = true;
   
     const dialogRef = this.dialog.open(CustomerEditComponent, {
-     data:{}
+     data:customer
     });
 
 
     dialogRef.afterClosed().subscribe(result => {
       this.isPopupOpened = false;
     });
-  }
-  deletecustomer(id:number){
-console.log(id)
-  }
-
-  ngOnInit() {
-    this.customerservice.getAll()
-      .subscribe((resultData: Array<Customer>) => {
-        this.customers = resultData;
-        this.dataSource = new MatTableDataSource(this.customers);
-      });
   }
 
 }

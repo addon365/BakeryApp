@@ -44,12 +44,7 @@ export class ProductListComponent implements OnInit {
    //this.selectedItem=product;
   }
  
-  deleteproduct(id: number) {
-    console.log(id);
-    console.log(this.products.length);
-    const Product = this.products.findIndex(c => c.id === id);
-    this.products.splice(Product, 1);
-      }
+  
     }
 
 

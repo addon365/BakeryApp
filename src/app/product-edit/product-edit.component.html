@@ -8,13 +8,13 @@
 
 <mat-card-content>
   
-  <form>
+  <form (submit)="onSubmit()">
     <div class="form-group">
       <div class="col-md-12">
         <div class="col-md-6">
           <label>Item Name</label>
           <mat-form-field class="example-full-width">
-              <input matInput [value]="data.name" placeholder=" Item Name">
+              <input matInput [(ngModel)]="data.name" [value]="name" placeholder=" Item Name" name="name">
             </mat-form-field>
         </div>
       </div>
@@ -22,7 +22,7 @@
         <div class="col-md-6">
           <label>Quality</label>
           <mat-form-field class="example-full-width">
-              <input matInput [value]="data.quantity" placeholder="Quantity">
+              <input matInput [(ngModel)]="data.quantity" [value]="quanity" placeholder="Quantity" name="quanity">
             </mat-form-field>
         </div>
       </div>
@@ -30,7 +30,7 @@
         <div class="col-md-6">
           <label>Price</label>
           <mat-form-field class="example-full-width">
-              <input matInput [value]="data.price" placeholder="Price">
+              <input matInput [(ngModel)]="data.price" [value]="price" placeholder="Price" name="price">
             </mat-form-field>
         </div>
       </div>
@@ -38,7 +38,7 @@
      
       <div class="col-md-12">
         <div class="col-md-3">
-        <button type="submit" class="btn btn-success btn-save">
+        <button type="submit" (click)="onSubmit()" class="btn btn-success btn-save">
         
           <mat-icon>save</mat-icon>
         </button>

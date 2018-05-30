@@ -17,9 +17,10 @@
             <div *ngIf="mobile.errors.minlength">*must be a 10 letter*</div>
            </span>
         <mat-form-field class="example-full-width">
-          <input matInput [(ngModel)]="customer.alternateMobile" type="text"  placeholder="AlternateMobile" minlength="10" maxlength="10" #altermobile="ngModel" name="alternateMobile">
+          <input matInput [(ngModel)]="customer.alternateMobile" type="text"  placeholder="AlternateMobile" pattern="[0-9]*" minlength="10" maxlength="10" #altermobile="ngModel" name="alternateMobile">
         </mat-form-field>
         <span style="color: red;" *ngIf="altermobile.touched && !altermobile.valid">
+            <div *ngIf="altermobile.errors.pattern">*invalid number*</div>
            
             <div *ngIf="altermobile.errors.minlength">*must be a 10 letter*</div>
            </span>

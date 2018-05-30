@@ -29,14 +29,6 @@ export class ProductdetailComponent implements OnInit {
   @ViewChild('quantitySearch') searchinput1 :ElementRef;
   @ViewChild('inputSearch') inputSearch: ElementRef;
 
- // @HostListener('document:keyup', ['$event'])
-  //keyup(event: KeyboardEvent): void {
-    //const charCode = (event.which) ? event.which : event.keyCode;
-    //if (charCode === 13) {
-     //this.searchinput.nativeElement.focus();
-    
-   // }
-  //}
 
   constructor(private customerService: CustomerService,
     private productService: ProductService) { }
@@ -46,7 +38,7 @@ export class ProductdetailComponent implements OnInit {
     this.productService.getAll()
       .subscribe((products: Array<Product>) => {
         this.products = products;
-        
+        this.itemName.focus();
        
       });
     this.filteredOptions = this.formControl.valueChanges.pipe(
@@ -80,8 +72,6 @@ export class ProductdetailComponent implements OnInit {
     );
     
   }
-  Keydown(event: KeyboardEvent){
-    console.log(this.itemQuantity.focus());
-  }
+  
 
 }
