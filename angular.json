@@ -26,7 +26,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              
+              "./node_modules/qz-tray/qz-tray.js"
             ]
           },
           "configurations": {
@@ -77,6 +77,9 @@
               "styles.css"
             ],
             "scripts": [
+              "./node_modules/qz-tray/qz-tray.js",
+              "./node_modules/js-sha256/build/sha256.min.js",
+              "./node_modules/js-sha256/src/sha256.js"
             ],
             "assets": [
               "src/favicon.ico",

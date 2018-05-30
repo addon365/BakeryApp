@@ -4,8 +4,6 @@ import { Shop } from '../models/shop';
 import { Utils } from '../utils';
 import { MatDialog } from '@angular/material';
 import { StoreSelectorComponent } from '../store-selector/store-selector.component';
-import { SalesOrderService } from '../services/sales-order.service';
-import { OrderStatus } from '../models/order-status';
 
 @Component({
   selector: 'app-main',
@@ -17,16 +15,12 @@ export class MainComponent implements OnInit {
   title = 'bakery app';
   public hasLoggedIn: boolean = false;
   private shop: Shop;
-  constructor(public dialog: MatDialog,
-    private salesOrderService: SalesOrderService) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
     this.shop = JSON.parse(localStorage.getItem(Utils.SHOP_KEY));
     this.hasLoggedIn = this.shop != null;
-    this.salesOrderService.getStatuses()
-      .subscribe((orderStatuses: Array<OrderStatus>) => {
-        Utils.setOrderStatuses(orderStatuses);
-      });
+
   }
   changeShopName() {
     this.shop = null;

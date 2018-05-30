@@ -10,6 +10,13 @@ import { OrderStatus } from './models/order-status';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- 
+  constructor(private salesOrderService: SalesOrderService) {
+    salesOrderService.getStatuses()
+      .subscribe((orderStatuses: Array<OrderStatus>) => {
+        Utils.orderStatuses = orderStatuses;
+      });
+      
+  }
+
 
 }

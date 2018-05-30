@@ -23,7 +23,7 @@ export class OrderlistComponent implements OnInit {
 
 
   ngOnInit() {
-    this.salesorderservice.getOrders()
+    this.salesorderservice.getAll()
       .subscribe((resultData: Array<SalesOrder>) => {
         console.log(resultData);
         this.salesorder = resultData;

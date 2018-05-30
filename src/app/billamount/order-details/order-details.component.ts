@@ -44,7 +44,7 @@ export class OrderDetailsComponent implements OnInit {
     this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
 
     this.salesOrderService.addSalesOrder(this.salesOrder)
-      .subscribe((response: any) => {
+      .subscribe((response: SalesOrder) => {
         this.isPopupOpened = true;
 
         const dialogRef = this.dialog.open(PrintComponent, {
