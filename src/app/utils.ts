@@ -2,11 +2,11 @@ import { OrderStatus } from "./models/order-status";
 import { Shop } from "./models/shop";
 import { SalesOrderService } from "./services/sales-order.service";
 
-const API_URL = 'http://localhost:8080/';
-const PRODUCT_URL = API_URL + "api/product/";
-const CUSTOMER_URL = API_URL + "api/customer/";
-const ORDER_URL = API_URL + "api/order/";
-const SHOP_URL = API_URL + "api/shop/";
+const API_URL = 'http://localhost:8080/BakeryService';
+const PRODUCT_URL = API_URL + "/api/product/";
+const CUSTOMER_URL = API_URL + "/api/customer/";
+const ORDER_URL = API_URL + "/api/order/";
+const SHOP_URL = API_URL + "/api/shop/";
 
 const GET_ORDERS="getOrders";
 const ACTION_SALES_REPORT = "getSalesReport";
