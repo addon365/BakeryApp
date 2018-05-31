@@ -10,19 +10,20 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductEditComponent implements OnInit {
 
-  //@Input() item: Product = null;  
-  
+
+
   constructor(private _formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<ProductEditComponent>,private productService: ProductService,
-   
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-  
-    onNoClick(): void {
-      this.dialogRef.close(); 
-     }
+    private dialogRef: MatDialogRef<ProductEditComponent>, private productService: ProductService,
+
+    @Inject(MAT_DIALOG_DATA) public data: Product) {}
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
-   
+
 
   }
   onSubmit() {
@@ -30,6 +31,6 @@ export class ProductEditComponent implements OnInit {
       .subscribe((response) => {
         this.dialogRef.close();
       });
-    
+
   }
 }

@@ -11,8 +11,8 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductListComponent implements OnInit {
   isPopupOpened = true;
-  displayedColumns = ['id', 'name', 'quantity', 'price','actionsColumn'];
-  @Input() public selectedItem:Product;
+  displayedColumns = ['id', 'name', 'quantity', 'price', 'actionsColumn'];
+  @Input() public selectedItem: Product;
   public products: Array<Product> = [];
   public dataSource = new MatTableDataSource(this.products);
 
@@ -30,21 +30,21 @@ export class ProductListComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.products);
       });
   }
-  editproduct(product:Product) {
+  editproduct(product: Product) {
     this.isPopupOpened = true;
-    
-     const dialogRef = this.dialog.open(ProductEditComponent, {
-     data: product
-     });
- 
- 
-     dialogRef.afterClosed().subscribe(result => {
-       this.isPopupOpened = false;
-     });
-   //this.selectedItem=product;
+
+    const dialogRef = this.dialog.open(ProductEditComponent, {
+      data: product
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isPopupOpened = false;
+    });
+
   }
- 
-  
-    }
+
+
+}
 
 

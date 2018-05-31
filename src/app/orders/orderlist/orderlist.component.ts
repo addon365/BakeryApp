@@ -23,9 +23,8 @@ export class OrderlistComponent implements OnInit {
 
 
   ngOnInit() {
-    this.salesorderservice.getAll()
+    this.salesorderservice.getOrders()
       .subscribe((resultData: Array<SalesOrder>) => {
-        console.log(resultData);
         this.salesorder = resultData;
         this.dataSource = new MatTableDataSource(this.salesorder);
       });

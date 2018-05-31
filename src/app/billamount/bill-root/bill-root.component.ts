@@ -19,10 +19,6 @@ export class BillRootComponent implements OnInit {
 
   ngOnInit() {
     this.salesOrder = SalesOrder.init();
-    this.orderService.getStatuses()
-      .subscribe((orderStatuses: Array<OrderStatus>) => {
-        Utils.orderStatuses = orderStatuses;
-      });
     
   }
 
@@ -36,7 +32,6 @@ export class BillRootComponent implements OnInit {
     this.isOrder = true;
   }
   onOrderCompleted($event){
-    console.log("On Order Completed");
     this.isOrder=false;
     this.salesOrder=SalesOrder.init();
   }
