@@ -30,7 +30,7 @@ export class OrderDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-//this.mobileinput.focus();
+    
   }
   findCustomer() {
     this.customerService.findByMobile(this.salesOrder.customer.mobile)
@@ -41,7 +41,9 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
   onSubmit() {
-    this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
+    if(this.salesOrder.advance < this.salesOrder.total){
+     
+      this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
 
     this.salesOrderService.addSalesOrder(this.salesOrder)
       .subscribe((response: SalesOrder) => {
@@ -61,6 +63,13 @@ export class OrderDetailsComponent implements OnInit {
           duration: 2000
         });
       });
+     
+     
+          }else{
+            alert("Advance amount is greater than total amount");
+          }
+    
+   
 
   }
 }
