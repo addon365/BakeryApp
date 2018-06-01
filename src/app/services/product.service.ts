@@ -11,10 +11,10 @@ export class ProductService {
   public getAll() {
     return this.httpClient.get(`${Utils.getProductURL()}`);
   }
-  addProduct(item: Product) {
+ public addProduct(item: Product) {
     return this.httpClient.post(`${Utils.addProductURL()}`, item);
   }
-  editProduct(item: Product) {
+  public editProduct(item: Product) {
     return this.httpClient.post(`${Utils.editProductURL()}`, item);
   }
 }

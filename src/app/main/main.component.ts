@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
     }
     else {
       this.shop = $event;
-      console.log($event);
+    
       localStorage.removeItem(Utils.SHOP_KEY);
       localStorage.setItem(Utils.SHOP_KEY, JSON.stringify(this.shop));
       this.hasLoggedIn = true;

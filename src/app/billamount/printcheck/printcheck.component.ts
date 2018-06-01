@@ -20,7 +20,7 @@ export class PrintcheckComponent implements OnInit {
   
 
   ngOnInit() {
-    console.log(this.data.orderItems);
+   
   
   }
   @ViewChild('printsection') printsection: ElementRef;

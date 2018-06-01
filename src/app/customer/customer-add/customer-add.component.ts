@@ -27,8 +27,8 @@ export class CustomerAddComponent implements OnInit {
       }
       );
     this.customer.name = "";
-    this.customer.mobile = "1";
-    this.customer.alternateMobile = "23";
+    this.customer.mobile = "";
+    this.customer.alternateMobile = "";
     this.customerName.focus();
 
   }
