@@ -86,7 +86,7 @@ export class ProductdetailComponent implements OnInit {
     const inputsearch = <HTMLInputElement>this.inputSearch.nativeElement;
     inputsearch.select();
   }
-
+public flavour1:Flavour;
   onSelectionChange(product: Product, flavour: Flavour, uom: Uom) {
   
     for (let i of this.uom) {
@@ -101,15 +101,17 @@ export class ProductdetailComponent implements OnInit {
       product.price,
       1,
       this.selected,
-      flavour,
+      this.flavour1,
       null
     );
+    console.log(this.item);
   }
   public flavoursearch = null;
   onChange(event, flavour: Flavour) {
     
     if (event.isUserInput) {
       this.item.flavour = flavour;
+     this.flavour1 = this.item.flavour;
     }
   }
 }
