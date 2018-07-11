@@ -12,12 +12,21 @@ import { OrderlistComponent } from './orders/orderlist/orderlist.component';
 import { PrintComponent } from './printpage/print/print.component';
 import { SalesReportComponent } from './sales/sales-report/sales-report.component';
 import { MainComponent } from './main/main.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
+import { FlavourAddComponent } from './flavours/flavour-add/flavour-add.component';
+import { FlavourListComponent } from './flavours/flavour-list/flavour-list.component';
+import { ShopAddComponent } from './shops/shop-add/shop-add.component';
+import { ShopListComponent } from './shops/shop-list/shop-list.component';
+import { ProductionComponent } from './productions/production/production.component';
+import { InproductionComponent } from './productions/inproduction/inproduction.component';
+import { AllSalesReportComponent } from './sales/all-sales-report/all-sales-report.component';
+
+
 
 
 const routes: Routes = [
     {
-        path: 'http://localhost:4200/bakery-application/',redirectTo:'/bill',pathMatch:'full'
-       
+        path: '', redirectTo:'', pathMatch:'full'
     },
     {
         path: 'product',
@@ -27,6 +36,10 @@ const routes: Routes = [
         path: 'product-list',
         component: ProductListComponent
     },
+    // {
+    //     path: 'product-list/:_id',
+    //     component: ProductEditComponent
+    // },
     {
         path: 'customer-add',
         component: CustomerAddComponent
@@ -46,7 +59,37 @@ const routes: Routes = [
     {
         path: 'sales-report',
         component: SalesReportComponent
-    }
+    },
+    {
+        path: 'flavour-add',
+        component: FlavourAddComponent
+    },
+    {
+        path: 'flavour-list',
+        component: FlavourListComponent
+    },
+    {
+        path: 'shops-add',
+        component: ShopAddComponent
+    },
+    {
+        path: 'shops-list',
+        component: ShopListComponent
+    },
+    {
+        path:'pendinglist',
+        component:ProductionComponent
+    },
+    {
+        path:'Inproductionlist',
+        component:InproductionComponent
+    },
+    {
+        path:'All-Sales-Report',
+        component:AllSalesReportComponent
+    },
+   
+    
 
 ];
 

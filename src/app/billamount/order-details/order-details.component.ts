@@ -10,7 +10,6 @@ import { MatDialog, MatInput } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { Utils } from '../../utils';
 
-
 @Component({
   selector: 'order-details',
   templateUrl: './order-details.component.html',
@@ -32,23 +31,22 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit() {
     
   }
-  findCustomer() {
-    this.customerService.findByMobile(this.salesOrder.customer.mobile)
-      .subscribe((customer: Customer) => {
-        if (customer != null) {
-          this.salesOrder.customer = customer;
-        }
-      });
+  findmobile(){
+    var x =(<HTMLInputElement>(document.getElementById("findmobile")));
+    x.value =x.value, this.customerService.findByMobile(this.salesOrder.customer.mobile)
+    .subscribe((customer: Customer) => {
+      if (customer != null) {
+        this.salesOrder.customer = customer;
+      }
+    });
   }
   onSubmit() {
     if(this.salesOrder.advance < this.salesOrder.total){
-     
       this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
-
     this.salesOrderService.addSalesOrder(this.salesOrder)
+   
       .subscribe((response: SalesOrder) => {
         this.isPopupOpened = true;
-
         const dialogRef = this.dialog.open(PrintComponent, {
           data: response
         });
@@ -66,7 +64,9 @@ export class OrderDetailsComponent implements OnInit {
      
      
           }else{
-            alert("Advance amount is greater than total amount");
+            this.snackBar.open("Advance amount is lesser than total amount","",{
+              duration: 3000
+            });
           }
     
    

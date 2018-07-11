@@ -57,6 +57,19 @@ import { OrderEditComponent } from './orders/order-edit/order-edit.component';
 import { SalesReportComponent } from './sales/sales-report/sales-report.component';
 import { SalesReportDetailsComponent } from './sales/sales-report-details/sales-report-details.component';
 import { PrintcheckComponent } from './billamount/printcheck/printcheck.component';
+import { FlavourAddComponent } from './flavours/flavour-add/flavour-add.component';
+import { FlavourListComponent } from './flavours/flavour-list/flavour-list.component';
+import { ShopAddComponent } from './shops/shop-add/shop-add.component';
+import { ShopListComponent } from './shops/shop-list/shop-list.component';
+import { FlavourEditComponent } from './flavours/flavour-edit/flavour-edit.component';
+import { ShopEditComponent } from './shops/shop-edit/shop-edit.component';
+import { ProductionComponent } from './productions/production/production.component';
+import { InproductionComponent } from './productions/inproduction/inproduction.component';
+import { AllSalesReportComponent } from './sales/all-sales-report/all-sales-report.component';
+import { AllSalesReportEditComponent } from './sales/all-sales-report-edit/all-sales-report-edit.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -85,6 +98,28 @@ import { PrintcheckComponent } from './billamount/printcheck/printcheck.componen
     SalesReportDetailsComponent,
     
     PrintcheckComponent,
+    
+    FlavourAddComponent,
+    
+    FlavourListComponent,
+    
+    ShopAddComponent,
+    
+    ShopListComponent,
+    
+    FlavourEditComponent,
+    
+    ShopEditComponent,
+    
+    ProductionComponent,
+    
+    InproductionComponent,
+    
+    AllSalesReportComponent,
+    
+    AllSalesReportEditComponent,
+    
+   
   ],
   imports: [
     MatTableModule,
@@ -123,7 +158,7 @@ import { PrintcheckComponent } from './billamount/printcheck/printcheck.componen
   HttpClientModule,
   ],
   providers: [],
-  entryComponents:[CustomerEditComponent,ProductEditComponent,OrderEditComponent,SalesReportDetailsComponent,PrintComponent,PrintcheckComponent],
+  entryComponents:[AllSalesReportEditComponent, CustomerEditComponent,ProductEditComponent,OrderEditComponent,SalesReportDetailsComponent,PrintComponent,PrintcheckComponent,FlavourEditComponent,ShopEditComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

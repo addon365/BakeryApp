@@ -12,7 +12,7 @@ import { MatInput, MatSnackBar } from '@angular/material';
 export class ProductComponent implements OnInit {
   @ViewChild('itemNameInput') itemName: MatInput;
   public item: Product
-    = new Product(1, "", 1, 0);
+    = new Product(1,"",0,1,"");
   constructor(private productService: ProductService,
     public snackBar: MatSnackBar) { }
 
@@ -31,12 +31,18 @@ if(this.item.quantity > 0 && this.item.price > 0){
 this.item.name = "";
 this.item.price = 0;
 this.item.quantity = 1;
+this.item.modelNumber = "";
 this.itemName.focus();
 }
 else if(this.item.price === 0){
-  alert("Price must be greater than 0");
+
+ this.snackBar.open("Price must be greater than 0","", {
+              duration: 3000,
+            });
   }else if(this.item.quantity === 0){
-    alert("Quantity must be greater than 0");
+    this.snackBar.open("Quantity must be greater than 0","", {
+      duration: 3000,
+    });
   }
 }
    

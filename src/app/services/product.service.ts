@@ -15,6 +15,6 @@ export class ProductService {
     return this.httpClient.post(`${Utils.addProductURL()}`, item);
   }
   public editProduct(item: Product) {
-    return this.httpClient.post(`${Utils.editProductURL()}`, item);
+    return this.httpClient.post(`${Utils.editProductURL()}`,item);
   }
 }

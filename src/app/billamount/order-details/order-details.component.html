@@ -5,14 +5,11 @@
       <tr>
         <td>
             <form #orderproduct="ngForm">
-          <div class="col">
-          <div class="row">
-            <div class="col-md-9">
                
             <mat-form-field class="example-full-width">
               <span matPrefix>+91 &nbsp;</span>
-              <input [(ngModel)]="salesOrder.customer.mobile" name="salesOrder.customer.mobile" type="tel" minlength="10" maxlength="10" pattern="[0-9]*"  #mobileinput="matInput" #mobile="ngModel" matInput placeholder="Mobile" required autofocus>
-              <mat-icon matSuffix>mode_edit</mat-icon>
+              <input [(ngModel)]="salesOrder.customer.mobile" name="salesOrder.customer.mobile" type="tel" minlength="10" maxlength="10" pattern="[0-9]*"  #mobileinput="matInput" #mobile="ngModel" id="findmobile" (focusout)="findmobile()" matInput placeholder="Mobile" required autofocus>
+              <mat-icon matSuffix class="cursor">mode_edit</mat-icon>
              
             </mat-form-field>
             <span style="color: red;" *ngIf="mobile.touched && !mobile.valid">
@@ -22,20 +19,14 @@
               </span>
             
             
-          </div>
-          <div class="col-md-3">
-            <button mat-button href="#" (click)="findCustomer()" style="background-color:rgb(85, 61, 85);color:white">Find Customer</button>
-          </div>
-        </div>
-        </div>
-        <mat-form-field class="example-full-width">
+        <!-- <mat-form-field class="example-full-width">
             <input matInput [(ngModel)]="salesOrder.customer.alternateMobile" type="tel"  placeholder="AlternateMobile" pattern="[0-9]*" minlength="10" maxlength="10" #altermobile="ngModel" name="salesOrder.customer.alternateMobile">
           </mat-form-field>
           <span style="color: red;" *ngIf="altermobile.touched && !altermobile.valid">
               <div *ngIf="altermobile.errors.pattern">*invalid number*</div>
              
               <div *ngIf="altermobile.errors.minlength">*must be a 10 letter*</div>
-             </span>
+             </span> -->
           <mat-form-field class="example-full-width">
             <input required name="salesOrder.customer.name" pattern="[a-zA-Z][a-zA-Z]+" [(ngModel)]="salesOrder.customer.name" #firstName="ngModel" id="firstName" matInput placeholder="First name">
           
@@ -70,7 +61,21 @@
                 <div *ngIf="time.errors.required">*time is required*</div>
                 
               </span>
-            <button mat-button (click)="onSubmit()" [disabled]="orderproduct.invalid" style="background-color:rgb(85, 61, 85);color:white ">Submit</button>
+              <mat-radio-group [(ngModel)]="salesOrder.message" name="salesOrder.message">
+                  <mat-radio-button class ="checkbox"  value="Happy Birthday">Happy Birthday</mat-radio-button>
+                  <mat-radio-button  class ="checkbox" value="Happy Anniversary">Happy Anniversary</mat-radio-button>
+                </mat-radio-group>
+                  <!-- <mat-checkbox class ="checkbox" value="1">Happy Birthday</mat-checkbox>
+                  <mat-checkbox class ="checkbox" value="2">Happy Anniversary</mat-checkbox> -->
+               
+              <mat-form-field>
+                  <textarea matInput name="salesOrder.comments" [(ngModel)]="salesOrder.comments" #description="ngModel" id="comments" placeholder="Description" required></textarea>
+                </mat-form-field>
+                <span style="color: red;" *ngIf="description.touched && !description.valid">
+                    <div *ngIf="description.errors.required">*description is required*</div>
+                    
+                  </span>
+            <button mat-button (click)="onSubmit()" [disabled]="orderproduct.invalid" style="background-color:#68829e;color:white ">Submit</button>
           </form>
         </td>
       </tr>

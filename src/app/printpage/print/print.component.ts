@@ -46,17 +46,37 @@ export class PrintComponent implements OnInit {
             font-size:auto;
         }
        
-          @page{
-          size:80mm 20mm;
-         
-          }
-       
+        .bakeryhead{
+          font-size: 25px;
+        }
+        .shop{
+            padding-right: 50px;
+            text-transform: uppercase;
+        }
+      .underline{
+          border-bottom: 1px solid;
+      } 
+      table td{
+        width:50px;
+        overflow: hidden; 
+        word-wrap: break-word;
+      }
+      .shop_print{
+        position: relative;
+        bottom: 20px;
+      }
+      .display{
+        display: none;
+    }
         .text-center{
           text-align:center;
         }
-        .center{
-          text-align:center;
-        }
+        .comments{
+          width: 100%;
+          word-wrap: break-word;
+          border-color: white;
+       }
+
         .table {
           width: 100%;
           max-width: 100%;

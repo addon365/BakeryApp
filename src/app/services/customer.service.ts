@@ -3,6 +3,7 @@ import{Customer} from '../models/customer';
 import { Utils } from '../utils';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,4 +31,5 @@ export class CustomerService {
   public editCustomer(customer: Customer) {
     return this.httpClient.post(`${Utils.editCustomerURL()}`, customer);
   }
+  
 }

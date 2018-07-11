@@ -16,9 +16,9 @@ export class SalesReportComponent implements OnInit {
   salesReport: Array<SalesOrder>;
 
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    // filterValue = filterValue.trim(); // Remove whitespace
+    // filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   isPopupOpened = true;
   constructor(private salesOrderService: SalesOrderService,

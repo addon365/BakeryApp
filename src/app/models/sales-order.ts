@@ -16,6 +16,8 @@ export class SalesOrder {
         public expectedTime: string,
         public orderStatus: OrderStatus,
         public shop: Shop,
+        public message: string,
+        public comments: string,
         public orderItems: Array<OrderItem>
     ) { }
 
@@ -36,6 +38,8 @@ export class SalesOrder {
             "",
             Utils.getOrderStatus(Utils.PENDING),
             Utils.getCurrentShop(),
+            "",
+            "",
             new Array<OrderItem>()
         );
     }

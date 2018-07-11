@@ -8,8 +8,8 @@
         <order-details *ngIf="isOrder" [salesOrder]="salesOrder" (orderCompleted)="onOrderCompleted($event)"></order-details>
       
     </div>
-    <div class="col-md-4">
-      <app-cart [salesOrder]="salesOrder" (onOrder)="onOrderClicked($event)"></app-cart>
+    <div class="col-md-6">
+      <app-cart [salesOrder]="salesOrder" (closeBill)="oncloseBill($event)" (onOrder)="onOrderClicked($event)"></app-cart>
     </div>
   </div>
 </div>

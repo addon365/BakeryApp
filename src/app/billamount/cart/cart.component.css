@@ -5,9 +5,19 @@
 .button-card{
     margin-top: 20px;
     text-align: center;
-    color: #ddd;
+    
+}
+.button_2{
+    background-color:  #68829e;
+   
+     color: #ffffff;
 }
 
-.item-cart{
+/* .item-cart{
     padding-left: 0px;
+} */
+div.overflow{
+    overflow: auto;
+   height: 358px;
+   
 }

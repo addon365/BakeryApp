@@ -1,5 +1,7 @@
 <div class="col-md-8">
+    <h1 class="header_1">Product List</h1>
     <div class="example-container mat-elevation-z8">
+      
         <div class="example-header">
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -18,6 +20,11 @@
           </ng-container>
       
           <!-- Name Column -->
+          <ng-container matColumnDef="modelNumber">
+            <th mat-header-cell *matHeaderCellDef> modelNumber </th>
+            <td mat-cell *matCellDef="let element"> {{element.modelNumber}} </td>
+          </ng-container>
+
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>

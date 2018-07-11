@@ -15,7 +15,7 @@ import { SalesOrderService } from '../../services/sales-order.service';
 export class OrderEditComponent implements OnInit {
 
   public productForm: FormGroup;
-  public orderStatuses: Array<OrderStatus>;
+  public orderStatuses: OrderStatus;
 
   constructor(private _formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<OrderEditComponent>,
@@ -29,14 +29,14 @@ export class OrderEditComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
+balance:number;
   ngOnInit() {
-    this.orderStatuses = Utils.getOrderStatuses();
-
+    this.orderStatuses = Utils.getOrderStatus("Delivered") ;
+this.balance=this.data.total - this.data.advance;
   }
 
   onSubmit() {
-  
+  this.data.orderStatus = this.orderStatuses;
     this.salesOrderService.editSalesOrder(this.data)
       .subscribe((response) => {
         this.dialogRef.close();

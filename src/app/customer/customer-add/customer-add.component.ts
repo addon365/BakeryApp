@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatInput, MatSnackBar } from '@angular/material';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
@@ -9,13 +9,17 @@ import { CustomerService } from '../../services/customer.service';
   styleUrls: ['./customer-add.component.css']
 })
 export class CustomerAddComponent implements OnInit {
+ 
   @ViewChild('customerNameInput') customerName: MatInput;
   public customer: Customer
-    = new Customer(-1, "", "", '');
+    = new Customer( -1, "", "", '');
+   
+
   constructor(private customerservice:CustomerService,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.customerName.focus();
+
   } 
   onSubmit() {
 

@@ -29,38 +29,57 @@ export class PrintcheckComponent implements OnInit {
     let printContents, popupWin;
     
     printContents = document.getElementById('printsection').innerHTML;
-    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin = window.open('', '_blank');
     popupWin.document.open();
     popupWin.document.write(`
       <html>
         <head>
        
-          <style>
-          html, body {
-          
-            display: block; 
-            font-family: "Calibri";
-            margin: 0px;
-            font-size:auto;
-        }
-       
-          @page{
-          size:80mm 20mm;
-         
-          }
-       
-        .text-center{
-          text-align:center;
-        }
-        .center{
-          text-align:center;
-        }
-        .table {
-          width: 100%;
-          max-width: 100%;
-          margin-bottom: 20px;
+        <style>
+        html, body {
+        
+          display: block; 
+          font-family: "Calibri";
+          margin: 0px;
+          font-size:auto;
       }
-          </style>
+      .display_1{
+     display:none;
+      }
+      .bakeryhead{
+        font-size: 25px;
+      }
+      .shop{
+          padding-right: 50px;
+          text-transform: uppercase;
+      }
+    .underline{
+        border-bottom: 1px solid;
+    }
+    .printalign{
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+    .shop_print{
+      position: relative;
+      bottom: 20px;
+    }
+     
+      .text-center{
+        text-align:center;
+      }
+      table td{
+        width:50px;
+        overflow: hidden; 
+        word-wrap: break-word;
+      }
+      .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+        </style>
         </head>
     <body onload="window.print();window.close()"> ${printContents}</body>
       </html>`

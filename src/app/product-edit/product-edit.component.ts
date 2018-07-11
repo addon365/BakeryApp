@@ -27,9 +27,8 @@ export class ProductEditComponent implements OnInit {
 
   }
   onSubmit() {
-   
     this.productService.editProduct(this.data)
-      .subscribe((response) => {
+      .subscribe(() => {
         this.dialogRef.close();
      });
 

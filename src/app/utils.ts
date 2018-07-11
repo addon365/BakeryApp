@@ -3,11 +3,14 @@ import { Shop } from "./models/shop";
 import { SalesOrderService } from "./services/sales-order.service";
 
 
-const API_URL = 'http://localhost:8080/BakeryService-0.0.1-SNAPSHOT/';
+const API_URL = "http://localhost:8080/";
 const PRODUCT_URL = API_URL + "api/product/";
 const CUSTOMER_URL = API_URL + "api/customer/";
 const ORDER_URL = API_URL + "api/order/";
 const SHOP_URL = API_URL + "api/shop/";
+const FLAVOUR_URL = API_URL + "api/flavours/";
+const USER_URL = API_URL + "api/user/";
+const UOM_URL = API_URL + "api/uom/";
 
 
 const ACTION_SALES_REPORT = "getSalesReport";
@@ -17,7 +20,12 @@ const ADD_ACTION = "add";
 const STATUS_ACTION = "getStatuses";
 const EDIT_ACTION = "edit";
 const GET_ORDERS="getOrders";
-const ORDER_STATUS = "orderStatus"
+const ORDER_STATUS = "orderStatus";
+const REPORT_PARAM = "getReportParam/"
+const MOVE_TO_PRODUCTION = "moveToProduction"
+const MOVE_TO_InStock = "moveToStock"
+const CHECK_OUT = "checkout"
+
 
 export class Utils {
     
@@ -47,14 +55,43 @@ export class Utils {
         });
         return orderStatus;
     }
+    public static getPendingParamURL() {
+        return ORDER_URL + REPORT_PARAM + this.PENDING;
+    } 
+    public static getInproductionParamURL() {
+        return ORDER_URL + REPORT_PARAM + this.IN_PRODUCTION;
+    } 
+    
+    
+    public static getUomURL() {
+        return UOM_URL + GET_ACTION;
+    }
+    public static getFlavourURL() {
+        return FLAVOUR_URL + GET_ACTION;
+    }
+    public static addFlavourURL() {
+        return FLAVOUR_URL +  ADD_ACTION ;
+}
+public static editFlavourURL() {
+    return FLAVOUR_URL  + EDIT_ACTION; 
+}
     public static getStatusesURL() {
         return ORDER_URL + STATUS_ACTION;
     }
+    public static addShopURL() {
+        return SHOP_URL +  ADD_ACTION ;
+}
+public static editShopURL() {
+    return SHOP_URL + EDIT_ACTION; 
+}
     public static getShopURL() {
         return SHOP_URL + GET_ACTION;
     }
     public static getOrderURL() {
         return ORDER_URL + GET_ORDERS;
+    }
+    public static getAllOrderURL() {
+        return ORDER_URL + GET_ACTION;
     }
     public static editOrderURL() {
         return ORDER_URL + EDIT_ACTION;
@@ -65,14 +102,27 @@ export class Utils {
     public static addOrderURL() {
         return ORDER_URL + ADD_ACTION;
     }
+    public static addOrderNewURL() {
+        return ORDER_URL + CHECK_OUT;
+    }
+    
+    public static movetoProductionURL() {
+        return ORDER_URL + MOVE_TO_PRODUCTION;
+    }
+    public static movetoInStockURL() {
+        return ORDER_URL + MOVE_TO_InStock;
+    } 
     public static getProductURL() {
-        return PRODUCT_URL + GET_ACTION;
+            return PRODUCT_URL + GET_ACTION ;
     }
     public static addProductURL() {
-        return PRODUCT_URL + ADD_ACTION;
+              return PRODUCT_URL +  ADD_ACTION ;
     }
+    public static addUserURL() {
+        return USER_URL ;
+}
     public static editProductURL() {
-        return PRODUCT_URL + EDIT_ACTION;
+        return PRODUCT_URL + EDIT_ACTION; 
     }
     public static addCustomerURL() {
         return CUSTOMER_URL + ADD_ACTION;

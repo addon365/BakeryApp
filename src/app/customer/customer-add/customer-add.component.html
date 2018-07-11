@@ -1,5 +1,5 @@
 <div class="col-md-8">
-    <h2>Add Customer</h2>
+    <h1 class="header_1">Add Customer</h1>
   <form class="example-form" #addcustomer="ngForm">
       <mat-form-field class="example-full-width">
           <input matInput #customerNameInput="matInput" pattern="[a-zA-Z][a-zA-Z]+"  #custoname="ngModel" [(ngModel)]="customer.name" placeholder="Customer Name" name="customerName"   type="text" required autofocus>
@@ -24,6 +24,7 @@
            
             <div *ngIf="altermobile.errors.minlength">*must be a 10 letter*</div>
            </span>
-        <button mat-button (click)="onSubmit()" [disabled]="addcustomer.invalid" href="#" style="background-color:rgb(85, 61, 85);color:white ">Add Customer</button>
+        <button mat-button (click)="onSubmit()" [disabled]="addcustomer.invalid" href="#" style="background-color:#68829e;;color:white ">Add Customer</button>
     </form>
   </div>
+  
