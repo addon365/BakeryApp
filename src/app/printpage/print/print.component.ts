@@ -31,7 +31,7 @@ export class PrintComponent implements OnInit {
     let printContents, popupWin;
     
     printContents = document.getElementById('printsection').innerHTML;
-    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin = window.open('', '_blank');
     popupWin.document.open();
     popupWin.document.write(`
       <html>
@@ -64,6 +64,7 @@ export class PrintComponent implements OnInit {
       .shop_print{
         position: relative;
         bottom: 20px;
+        text-transform: uppercase;
       }
       .display{
         display: none;

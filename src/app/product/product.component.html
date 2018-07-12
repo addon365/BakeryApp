@@ -16,7 +16,7 @@
         <div *ngIf="itemname.errors.pattern">*Name must be a character*</div>
       </span>
     <mat-form-field class="example-full-width">
-      <input matInput [(ngModel)]="item.quantity" type="number" placeholder="Quanity" #quantity="ngModel" name="item.quantity" required>
+      <input matInput [(ngModel)]="item.quantity" type="number" placeholder="Quantity" #quantity="ngModel" name="item.quantity" required>
     </mat-form-field>
     <span style="color: red;" *ngIf="quantity.touched && !quantity.valid">
         <div *ngIf="quantity.errors.required">*field is required*</div>

@@ -104,7 +104,6 @@ public flavour1:Flavour;
       this.flavour1,
       null
     );
-    console.log(this.item);
   }
   public flavoursearch = null;
   onChange(event, flavour: Flavour) {

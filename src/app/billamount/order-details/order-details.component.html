@@ -61,14 +61,16 @@
                 <div *ngIf="time.errors.required">*time is required*</div>
                 
               </span>
-              <mat-radio-group [(ngModel)]="salesOrder.message" name="salesOrder.message">
+              <mat-radio-group [(ngModel)]="salesOrder.message" name="salesOrder.message" #checkbox="ngModel" required>
                   <mat-radio-button class ="checkbox"  value="Happy Birthday">Happy Birthday</mat-radio-button>
                   <mat-radio-button  class ="checkbox" value="Happy Anniversary">Happy Anniversary</mat-radio-button>
                 </mat-radio-group>
-                  <!-- <mat-checkbox class ="checkbox" value="1">Happy Birthday</mat-checkbox>
-                  <mat-checkbox class ="checkbox" value="2">Happy Anniversary</mat-checkbox> -->
-               
+                <span style="color: red;" *ngIf="checkbox.touched && !checkbox.valid">
+                    <div *ngIf="checkbox.errors.required">*checkbox is required*</div>
+                    
+                  </span>
               <mat-form-field>
+                 
                   <textarea matInput name="salesOrder.comments" [(ngModel)]="salesOrder.comments" #description="ngModel" id="comments" placeholder="Description" required></textarea>
                 </mat-form-field>
                 <span style="color: red;" *ngIf="description.touched && !description.valid">

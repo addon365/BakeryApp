@@ -64,6 +64,7 @@ export class PrintcheckComponent implements OnInit {
     .shop_print{
       position: relative;
       bottom: 20px;
+      text-transform: uppercase;
     }
      
       .text-center{
