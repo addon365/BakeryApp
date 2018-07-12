@@ -61,22 +61,22 @@
                 <div *ngIf="time.errors.required">*time is required*</div>
                 
               </span>
-              <mat-radio-group [(ngModel)]="salesOrder.message" name="salesOrder.message" #checkbox="ngModel" required>
+              <mat-radio-group [(ngModel)]="salesOrder.message" name="salesOrder.message">
                   <mat-radio-button class ="checkbox"  value="Happy Birthday">Happy Birthday</mat-radio-button>
                   <mat-radio-button  class ="checkbox" value="Happy Anniversary">Happy Anniversary</mat-radio-button>
                 </mat-radio-group>
-                <span style="color: red;" *ngIf="checkbox.touched && !checkbox.valid">
+                <!-- <span style="color: red;" *ngIf="checkbox.touched && !checkbox.valid">
                     <div *ngIf="checkbox.errors.required">*checkbox is required*</div>
                     
-                  </span>
+                  </span> -->
               <mat-form-field>
                  
-                  <textarea matInput name="salesOrder.comments" [(ngModel)]="salesOrder.comments" #description="ngModel" id="comments" placeholder="Description" required></textarea>
+                  <textarea matInput name="salesOrder.comments" [(ngModel)]="salesOrder.comments" id="comments" placeholder="Description"></textarea>
                 </mat-form-field>
-                <span style="color: red;" *ngIf="description.touched && !description.valid">
+                <!-- <span style="color: red;" *ngIf="description.touched && !description.valid">
                     <div *ngIf="description.errors.required">*description is required*</div>
                     
-                  </span>
+                  </span> -->
             <button mat-button (click)="onSubmit()" [disabled]="orderproduct.invalid" style="background-color:#68829e;color:white ">Submit</button>
           </form>
         </td>

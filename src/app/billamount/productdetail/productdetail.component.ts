@@ -24,6 +24,7 @@ import { UomService } from '../../services/uom.service';
 export class ProductdetailComponent implements OnInit {
   item: OrderItem;
   selected: Uom;
+  uoms:Uom;
   public products: Array<Product> = [];
   public flavours: Array<Flavour> = [];
   public uom: Array<Uom> = [];
@@ -81,14 +82,25 @@ export class ProductdetailComponent implements OnInit {
 
   public search = null;
   onAdd(item: any) {
+    
     this.addToCart.emit(item);
     this.itemName.focus();
     const inputsearch = <HTMLInputElement>this.inputSearch.nativeElement;
     inputsearch.select();
+   this.item = new OrderItem(
+      1,
+      item.product,
+      item.product.price,
+      1,
+      this.selected,
+      this.flavour1,
+      null);
+
+ //this.orderItem.product=null;
+  // console.log(this.orderItem);
   }
 public flavour1:Flavour;
-  onSelectionChange(product: Product, flavour: Flavour, uom: Uom) {
-  
+  onSelectionChange(event,product: Product, flavour: Flavour, uom: Uom) {
     for (let i of this.uom) {
       if (i.id == 1) {
 
@@ -104,6 +116,7 @@ public flavour1:Flavour;
       this.flavour1,
       null
     );
+    
   }
   public flavoursearch = null;
   onChange(event, flavour: Flavour) {

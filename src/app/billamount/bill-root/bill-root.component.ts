@@ -14,9 +14,7 @@ import { MatInput } from '@angular/material';
   styleUrls: ['./bill-root.component.css']
 })
 export class BillRootComponent implements OnInit {
-  public salesOrder: SalesOrder;
-
- 
+  public salesOrder: SalesOrder; 
   public isOrder: boolean = false;
   constructor(private orderService: SalesOrderService) { }
  
@@ -30,6 +28,7 @@ export class BillRootComponent implements OnInit {
    
     this.salesOrder.orderItems.push(item);
     this.salesOrder.total = this.salesOrder.total + item.price * item.quantity;
+  
   }
   onOrderClicked($event) {
     this.salesOrder = $event;

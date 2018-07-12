@@ -38,11 +38,9 @@ export class CartComponent implements OnInit {
     private salesOrderService: SalesOrderService, private dialog?: MatDialog) { }
 
   ngOnInit() {
-
-
     if (this.salesOrder.orderItems != null) {
         this.showOrderItems = true;
-     
+    
     }
     else{
       this.showOrderItems=false;

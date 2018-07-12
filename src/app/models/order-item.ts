@@ -14,5 +14,6 @@ export class OrderItem {
         public uom: Uom,
       public flavour: Flavour,
         public order: SalesOrder
-    ) { }
+    ) {}
 }
+
