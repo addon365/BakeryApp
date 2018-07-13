@@ -30,7 +30,7 @@
     </div>
   </div>
   <mat-form-field class="example-full-width">
-      <input matInput type="text" placeholder="Pick one flavour" name="flavour" [value]="flavoursearch" aria-label="Number" [formControl]="formControl1" [matAutocomplete]="auto" autofocus  required/>
+      <input matInput type="text" #flavourNameInput="matInput" placeholder="Pick one flavour" name="flavour" [(ngModel)]="flavourvalue" aria-label="Number" [formControl]="formControl1" [matAutocomplete]="auto" autofocus  required/>
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option (onSelectionChange)="onChange($event,flavour)" *ngFor="let flavour of filteredOptions2 | async" [value]="flavour.name">
           {{flavour.name}}

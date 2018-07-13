@@ -10,7 +10,7 @@ import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
-import { MatInput } from '@angular/material';
+import { MatInput, MatSnackBar } from '@angular/material';
 import { FlavourService } from '../../services/flavour.service';
 import { Flavour } from '../../models/flavour';
 import { Uom } from '../../models/uom';
@@ -25,6 +25,9 @@ export class ProductdetailComponent implements OnInit {
   item: OrderItem;
   selected: Uom;
   uoms:Uom;
+  condition:boolean=false;
+  flavourvalue:string;
+
   public products: Array<Product> = [];
   public flavours: Array<Flavour> = [];
   public uom: Array<Uom> = [];
@@ -38,9 +41,9 @@ export class ProductdetailComponent implements OnInit {
   @ViewChild('itemquantityInput') itemQuantity: MatInput;
   @ViewChild('quantitySearch') searchinput1: ElementRef;
   @ViewChild('inputSearch') inputSearch: ElementRef;
-
-
-  constructor(private customerService: CustomerService, private flavourService: FlavourService, private uomService: UomService,
+  @ViewChild('flavourNameInput') FlavourName: MatInput;
+  
+  constructor(private customerService: CustomerService, public snackBar: MatSnackBar, private flavourService: FlavourService, private uomService: UomService,
     private productService: ProductService) { }
 
   ngOnInit() {
@@ -82,22 +85,31 @@ export class ProductdetailComponent implements OnInit {
 
   public search = null;
   onAdd(item: any) {
+    if(this.condition===true && this.flavourvalue===this.item.flavour.name){
+      this.addToCart.emit(item);
+      this.itemName.focus();
+      const inputsearch = <HTMLInputElement>this.inputSearch.nativeElement;
+      inputsearch.select();
     
-    this.addToCart.emit(item);
-    this.itemName.focus();
-    const inputsearch = <HTMLInputElement>this.inputSearch.nativeElement;
-    inputsearch.select();
-   this.item = new OrderItem(
-      1,
-      item.product,
-      item.product.price,
-      1,
-      this.selected,
-      this.flavour1,
-      null);
-
- //this.orderItem.product=null;
-  // console.log(this.orderItem);
+        this.item = new OrderItem(
+          1,
+          item.product,
+          item.product.price,
+          1,
+          this.selected,
+          this.flavour1,
+          null);
+      
+      
+     
+    }else{
+   
+      this.snackBar.open("Flavour must be added", "", {
+        
+        duration: 2000,
+      });
+      this.FlavourName.focus();
+    }
   }
 public flavour1:Flavour;
   onSelectionChange(event,product: Product, flavour: Flavour, uom: Uom) {
@@ -124,6 +136,7 @@ public flavour1:Flavour;
     if (event.isUserInput) {
       this.item.flavour = flavour;
      this.flavour1 = this.item.flavour;
+     this.condition=true;
     }
   }
 }

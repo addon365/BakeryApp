@@ -4,6 +4,7 @@ import { SalesOrderService } from "./services/sales-order.service";
 
 
 const API_URL = "http://localhost:8080/BakeryService-0.0.1-SNAPSHOT/";
+// const API_URL = "http://localhost:8080/";
 const PRODUCT_URL = API_URL + "api/product/";
 const CUSTOMER_URL = API_URL + "api/customer/";
 const ORDER_URL = API_URL + "api/order/";

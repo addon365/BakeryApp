@@ -12,7 +12,7 @@ import { MatInput, MatSnackBar } from '@angular/material';
 export class ProductComponent implements OnInit {
   @ViewChild('itemNameInput') itemName: MatInput;
   public item: Product
-    = new Product(1,"",0,1,"");
+    = new Product(1,"",1,1,"");
   constructor(private productService: ProductService,
     public snackBar: MatSnackBar) { }
 
