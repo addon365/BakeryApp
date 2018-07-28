@@ -28,7 +28,7 @@
               <div *ngIf="altermobile.errors.minlength">*must be a 10 letter*</div>
              </span> -->
           <mat-form-field class="example-full-width">
-            <input required name="salesOrder.customer.name" pattern="[a-zA-Z][a-zA-Z]+" [(ngModel)]="salesOrder.customer.name" #firstName="ngModel" id="firstName" matInput placeholder="First name">
+            <input required name="salesOrder.customer.name"  pattern="[a-zA-Z '-,;.]*" [(ngModel)]="salesOrder.customer.name" #firstName="ngModel" id="firstName" matInput placeholder="First name">
           
           </mat-form-field>
           <span style="color: red;" *ngIf="firstName.touched && !firstName.valid">
@@ -49,11 +49,11 @@
              
               </span>
           <mat-form-field class="example-full-width">
-            <input [(ngModel)]="salesOrder.expectedDate" name="salesOrder.expectedDate" matInput [matDatepicker]="dp3" placeholder="Excepted date:(MM/DD/YYYY)" disabled required>
+            <input [(ngModel)]="salesOrder.expectedDate" name="expectedDate" matInput [matDatepicker]="dp3" placeholder="Excepted date:(MM/DD/YYYY)" disabled required>
             <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
             <mat-datepicker #dp3 disabled="false"></mat-datepicker>
           </mat-form-field>
-          
+      
             <mat-form-field  class="example-full-width">
               <input [(ngModel)]="salesOrder.expectedTime" name="salesOrder.expectedTime" type="time"  #time="ngModel" matInput placeholder="Excepted hours:(HH:MM)" required>
             </mat-form-field>

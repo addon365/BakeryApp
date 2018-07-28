@@ -5,28 +5,45 @@ import { MatDialog, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
 import{Router} from '@angular/router';
+import{ActivatedRoute,Params} from '@angular/router';
+var input, filter, table, tr, td, i;
 @Component({
   selector: 'app-inproduction',
   templateUrl: './inproduction.component.html',
   styleUrls: ['./inproduction.component.css']
 })
 export class InproductionComponent implements OnInit {
-  displayedColumns = [ 'select','id', 'mobile', 'advance', 'total', 'expectedDate', 'expectedTime', 'shop'];
-  public salesorder: Array<SalesOrder>;
+  public salesorder: Array<SalesOrder>=[];
   public salesorder1: Array<SalesOrder> =[];
+  shop:string;
+  edit:string;
+  change:string;
   public dataSource = new MatTableDataSource<SalesOrder>(this.salesorder);
   selection = new SelectionModel<SalesOrder>(true, []);
-   constructor(private salesOrderService: SalesOrderService,private router:Router,private snackBar: MatSnackBar,
+   constructor(private salesOrderService: SalesOrderService,private route:ActivatedRoute,private router:Router,private snackBar: MatSnackBar,
    ) { }
-   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
   ngOnInit() {
-    this.salesOrderService.getInproductionParam()
-    .subscribe((resultData: Array<SalesOrder>) => {
-      this.salesorder = resultData;
-      this.dataSource = new MatTableDataSource(this.salesorder);
-    });
+    this.shop = this.route.snapshot.params['shop']; 
+    this.edit = this.route.snapshot.params['admin'];
+    if(this.edit=="anumod"){
+      this.change="anumod1";
+      this.salesOrderService.getInproductionParam()
+      .subscribe((resultData: Array<SalesOrder>) => {
+        this.salesorder = resultData;
+        this.dataSource = new MatTableDataSource(this.salesorder);
+      });
+    }else{
+this.change=this.shop;
+      this.salesOrderService.getInproductionParam()
+      .subscribe((resultData: Array<SalesOrder>) => {
+        resultData.forEach(element => {
+          if(element.shop.shopName== this.shop){
+            this.salesorder.push(element);
+          }
+        });
+      });
+    }
+    
   }
 
   onclick(salesorder:SalesOrder){
@@ -41,6 +58,26 @@ export class InproductionComponent implements OnInit {
       }
      }
   }
+  applyFilter(){
+    var input, filter, table, tr, td, i,firstcol,secondcol,fitfhcol,seventhcol;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTab");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      firstcol = tr[i].getElementsByTagName("td")[1];
+      fitfhcol=tr[i].getElementsByTagName("td")[6];
+      seventhcol=tr[i].getElementsByTagName("td")[7];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || firstcol.innerHTML.toUpperCase().indexOf(filter) > -1 || fitfhcol.innerHTML.toUpperCase().indexOf(filter) > -1 ||seventhcol.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+}
   onAllClick(){
     const selectAll= this.isAllSelected();
     if(selectAll === false){
@@ -53,7 +90,7 @@ export class InproductionComponent implements OnInit {
     if(this.salesorder1.length >0){
       this.salesOrderService.movetoInStock(this.salesorder1)
       .subscribe((resultData:Array<SalesOrder>) => {
-        this.router.navigate(['/orderlist']);
+      this.router.navigate(['/orderlist',{shop1:this.change}]);
       });
           }else {
             this.snackBar.open("please check atleast one checkbox","", {

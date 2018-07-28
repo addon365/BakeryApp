@@ -28,7 +28,6 @@ export class MainComponent implements OnInit {
       .subscribe((orderStatuses: Array<OrderStatus>) => {
         Utils.setOrderStatuses(orderStatuses);
       });
-
   }
   changeShopName() {
     this.shop = null;
@@ -71,4 +70,5 @@ export class MainComponent implements OnInit {
   Adminlogout(){
     this.hasLoggedIn = true;
   }
+  edit:string ="anumod";
 }

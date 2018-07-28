@@ -7,6 +7,7 @@ import { Utils } from '../utils';
   providedIn: 'root'
 })
 export class ProductService {
+  
   constructor(private httpClient: HttpClient) { }
   public getAll() {
     return this.httpClient.get(`${Utils.getProductURL()}`);
@@ -17,4 +18,7 @@ export class ProductService {
   public editProduct(item: Product) {
     return this.httpClient.post(`${Utils.editProductURL()}`,item);
   }
+  deleteProduct(item: Product) {
+    return this.httpClient.delete(`${Utils.deleteProductURL()}`+`/${item.id}`);
+    }
 }

@@ -5,7 +5,9 @@
     max-height: 500px;
     overflow: auto;
   }
-  
+  .order_1{
+    float: right;
+}
   .example-header {
     min-height: 64px;
     padding: 8px 24px 0;
@@ -18,3 +20,11 @@
   tr.mat-row{
     height: 18px;
   }
+  .print_order{
+    right: 30px;
+    position: relative;
+  }
+  .none{
+    display: none;
+  }
+  

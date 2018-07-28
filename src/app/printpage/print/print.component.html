@@ -23,7 +23,7 @@
 </tr>
 <tr>
   <td class="border"></td>
-  <td class="border"><span class="bakeryhead"><b>NEW ANUMOD BAKERY</b></span><br><p class="text-center shop shop_print">{{data.shop.shopName | uppercase}}&nbsp; SHOP</p></td>
+  <td class="border text-center bakeryhead"><b>{{data.shop.shopName | uppercase}}&nbsp; SHOP</b></td>
   <td class="border"></td>
 </tr>
 <!-- <tr>
@@ -32,15 +32,20 @@
   <td class="border"></td>
 </tr> -->
 <tr>
-  <td class="border"> <strong> Bill NO: {{data.id}}&nbsp; </strong></td>
+  <td class="border"> <strong> Bill NO: {{data.customid}}&nbsp; </strong></td>
   <td class="border text-center shop"><strong>MOBILE NO:</strong>&nbsp;{{data.customer.mobile}}</td>
   <td class="border"><strong>DATE OF BOOKING:</strong>&nbsp;{{data.orderedDate}}</td>
 </tr>
 <tr>
   <td class="border"><strong>DATE OF DELIVERY:</strong>&nbsp;{{data.expectedDate}}</td>
-  <td class="border"></td>
+  <td class="border text-center shop"><strong>ADVANCE:</strong>&nbsp;{{data.advance}}</td>
   <td class="border"><strong>TIME:</strong>&nbsp;{{data.expectedTime}}</td>
 </tr>
+<tr>
+    <td class="border"><strong>BALANCE:</strong>&nbsp;{{balance}}</td>
+    <td class="border"></td>
+    <td class="border"></td>
+  </tr>
 </tbody>
   </table>
   <table class="table display_1">
@@ -59,14 +64,20 @@
       <td class="border text-center"><b class="underline">ORDER BILL</b></td>
     </tr>
     <tr>
-      <td class="border text-center"><span class="bakeryhead"><b>NEW ANUMOD BAKERY</b></span><br><p class="text-center shop_print">{{data.shop.shopName}}&nbsp; SHOP</p></td>
+        <td class="border text-center bakeryhead"><b>{{data.shop.shopName | uppercase}}&nbsp; SHOP</b></td>
     </tr>
     <tr>
-      <td class="border"> <strong> Bill NO: {{data.id}}&nbsp; </strong></td>
+      <td class="border"> <strong> Bill NO: {{data.customid}}&nbsp; </strong></td>
       </tr>
       <tr>
-      <td class="border"><strong>CUSTOMER NO:</strong>&nbsp;{{data.customer.mobile}}</td>
+      <td class="border"><strong>MOBILE NO:</strong>&nbsp;{{data.customer.mobile}}</td>
     </tr>
+    <tr>
+        <td class="border"><strong>ADVANCE:</strong>&nbsp;{{data.advance}}</td>
+      </tr>
+      <tr>
+          <td class="border"><strong>BALANCE:</strong>&nbsp;{{balance}}</td>
+        </tr>
     <tr>
       <td class="border"><strong>DATE OF BOOKING:</strong>&nbsp;{{data.orderedDate}}</td>
     </tr>
@@ -139,7 +150,7 @@
 
 
 <div class="col-md-12">
-  <button mat-button (click)="print()" style="background-color:#68829e;;color:white ">Print</button>
+  <button mat-button (click)="print()" style="background-color:#68829e;color:white ">Print</button>
 
 </div>
 

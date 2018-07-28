@@ -13,7 +13,7 @@
       <div class="col-md-12">
         <div class="col-md-6">
           <mat-form-field class="example-full-width">
-            <input [disabled]="true" readonly="true" [ngModel]="data.id" matInput placeholder="Id" name="id">
+            <input [disabled]="true" readonly="true" [ngModel]="data.customid" matInput placeholder="Id" name="id">
           </mat-form-field>
         </div>
       </div>
@@ -48,7 +48,7 @@
           <div class="col-md-12">
               <div class="col-md-6">
                 <mat-form-field class="example-full-width">
-                  <input matInput [disabled]="true" readonly="true" [ngModel]="balance"  name="balance" placeholder="Balance">
+                  <input matInput [disabled]="false" [(ngModel)]="balance"  name="balance" placeholder="Balance">
                 </mat-form-field>
               </div>
             </div>

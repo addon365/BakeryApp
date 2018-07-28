@@ -6,7 +6,10 @@
         border-top: none;
     }
   .bakeryhead{
-    font-size: 25px;
+    font-size: 19px;
+    position: relative;
+    right: 17px;
+    bottom: 11px;
   }
   .shop{
       padding-right: 50px;

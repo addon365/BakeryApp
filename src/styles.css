@@ -176,3 +176,59 @@ bottom: 65px;
         background-color: #66A5AD;
         border-color: #66A5AD;
     }
+    #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 13px;
+        background-color: white;
+      }
+      #myTab{
+        border: 1px solid #ddd;
+        font-size: 13px;
+        background-color: white;
+        position: relative;
+    right: 15px;
+      }
+      #myTab th,#mytab td{
+        text-align: left;
+        font-size: 14px;
+        padding: 12px;
+      }
+      #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+        font-size: 14px;
+      }
+      #myTab tr{
+        border-bottom: 1px solid #ddd;
+      }
+      #myTable tr {
+        border-bottom: 1px solid #ddd;
+      }
+      #myTab tr.header,#myTable tr:hover{
+        background-color: #68829e;
+        color:white;
+      }
+      #myTable tr.header, #myTable tr:hover {
+        background-color: #68829e;
+        color:white;
+        }
+        #myTab tr.header{
+            font-size: 15px;
+            font-family: sans-serif;
+        }
+      #myTable tr.header,{
+        font-size: 15px;
+        font-family: sans-serif;
+      }
+    .align{
+        position: relative;
+        right: 37px;
+
+    }
+    .hide_button{
+        background: #68829e;
+        border: none;
+        color: #fff;
+    }

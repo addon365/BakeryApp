@@ -11,6 +11,8 @@ import { CustomerService } from '../../services/customer.service';
 export class CustomerAddComponent implements OnInit {
  
   @ViewChild('customerNameInput') customerName: MatInput;
+  public customer1:string="";
+  public customers: Array<Customer> = [];
   public customer: Customer
     = new Customer( -1, "", "", '');
    
@@ -18,11 +20,27 @@ export class CustomerAddComponent implements OnInit {
   constructor(private customerservice:CustomerService,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.customerservice.getAll()
+    .subscribe((resultData: Array<Customer>) => {
+      
+      this.customers = resultData;
+    });
     this.customerName.focus();
 
   } 
   onSubmit() {
+    this.customers.forEach(element => {
 
+      if(element.mobile == this.customer.mobile){
+        this.customer1=element.mobile;
+      }
+      
+    });
+    if(this.customer1 == this.customer.mobile){
+      this.snackBar.open("Cunstomer Name already exist","", {
+        duration: 3000,
+       });
+    }else{
     this.customerservice.addCustomer(this.customer)
       .subscribe((response) => {
         this.snackBar.open("Added Customer Successfully", "Ok", {
@@ -36,5 +54,5 @@ export class CustomerAddComponent implements OnInit {
     this.customerName.focus();
 
   }
-
+  }
 }

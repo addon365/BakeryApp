@@ -14,7 +14,7 @@
           <div class="col-md-6">
             <label>Flavour Name</label>
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="data.name" [value]="name" placeholder=" Flavour Name" name="name">
+                <input matInput [disabled]="false" [(ngModel)]="data.name" [value]="name" placeholder=" Flavour Name" name="name">
               </mat-form-field>
           </div>
         </div>
@@ -22,7 +22,7 @@
           <div class="col-md-6">
             <label>Flavour Code</label>
             <mat-form-field class="example-full-width">
-                <input matInput [(ngModel)]="data.code" [value]="code" placeholder="Flavour Code" name="code">
+                <input matInput [disabled]="false" [(ngModel)]="data.code" [value]="code" placeholder="Flavour Code" name="code">
               </mat-form-field>
           </div>
         </div>

@@ -11,6 +11,7 @@ export class PrintcheckComponent implements OnInit {
 
   today: number = Date.now();
   
+  
   constructor(
     private dialogRef: MatDialogRef<PrintcheckComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SalesOrder
@@ -47,7 +48,7 @@ export class PrintcheckComponent implements OnInit {
      display:none;
       }
       .bakeryhead{
-        font-size: 25px;
+        font-size: 19px;
       }
       .shop{
           padding-right: 50px;

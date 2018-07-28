@@ -67,7 +67,12 @@ import { ProductionComponent } from './productions/production/production.compone
 import { InproductionComponent } from './productions/inproduction/inproduction.component';
 import { AllSalesReportComponent } from './sales/all-sales-report/all-sales-report.component';
 import { AllSalesReportEditComponent } from './sales/all-sales-report-edit/all-sales-report-edit.component';
-
+import { InstockComponent } from './productions/instock/instock.component';
+import { SalesReportPrintComponent } from './sales/sales-report-print/sales-report-print.component';
+import { CancelComponent } from './productions/cancel/cancel.component';
+import { CancelOrderComponent } from './productions/cancel-order/cancel-order.component';
+import { CancelListComponent } from './productions/cancel-list/cancel-list.component';
+import { OrderPrintComponent } from './orders/order-print/order-print.component';
 
 
 
@@ -119,6 +124,19 @@ import { AllSalesReportEditComponent } from './sales/all-sales-report-edit/all-s
     
     AllSalesReportEditComponent,
     
+    InstockComponent,
+    
+    SalesReportPrintComponent,
+    
+    CancelComponent,
+    
+    CancelOrderComponent,
+    
+    CancelListComponent,
+    
+    OrderPrintComponent,
+    
+    
    
   ],
   imports: [
@@ -158,7 +176,7 @@ import { AllSalesReportEditComponent } from './sales/all-sales-report-edit/all-s
   HttpClientModule,
   ],
   providers: [],
-  entryComponents:[AllSalesReportEditComponent, CustomerEditComponent,ProductEditComponent,OrderEditComponent,SalesReportDetailsComponent,PrintComponent,PrintcheckComponent,FlavourEditComponent,ShopEditComponent],
+  entryComponents:[AllSalesReportEditComponent,OrderPrintComponent,CancelOrderComponent, CustomerEditComponent,ProductEditComponent,OrderEditComponent,SalesReportDetailsComponent,PrintComponent,PrintcheckComponent,FlavourEditComponent,ShopEditComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

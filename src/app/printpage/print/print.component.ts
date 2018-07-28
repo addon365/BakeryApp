@@ -12,7 +12,7 @@ import { SalesOrder } from '../../models/sales-order';
 })
 export class PrintComponent implements OnInit {
   today: number = Date.now();
-  
+  balance:number;
   constructor(
     private dialogRef: MatDialogRef<PrintComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SalesOrder
@@ -22,8 +22,7 @@ export class PrintComponent implements OnInit {
   
 
   ngOnInit() {
-    
-  
+  this.balance=this.data.total-this.data.advance;
   }
   @ViewChild('printsection') printsection: ElementRef;
  
@@ -47,7 +46,7 @@ export class PrintComponent implements OnInit {
         }
        
         .bakeryhead{
-          font-size: 25px;
+          font-size: 19px;
         }
         .shop{
             padding-right: 50px;

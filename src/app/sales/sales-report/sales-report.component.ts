@@ -4,7 +4,7 @@ import { SalesReportDetailsComponent } from '../sales-report-details/sales-repor
 import { SalesOrder } from '../../models/sales-order';
 import { SalesOrderService } from '../../services/sales-order.service';
 import { OrderStatus } from '../../models/order-status';
-
+import{ActivatedRoute,Params} from '@angular/router';
 @Component({
   selector: 'app-sales-report',
   templateUrl: './sales-report.component.html',
@@ -12,37 +12,57 @@ import { OrderStatus } from '../../models/order-status';
 })
 export class SalesReportComponent implements OnInit {
   displayedColumns = ['position', 'name', 'mobile', 'total', 'actionsColumn'];
-  dataSource: MatTableDataSource<SalesOrder>;
-  salesReport: Array<SalesOrder>;
-
-  applyFilter(filterValue: string) {
-    // filterValue = filterValue.trim(); // Remove whitespace
-    // filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-  isPopupOpened = true;
-  constructor(private salesOrderService: SalesOrderService,
+  
+  public salesReport: Array<SalesOrder>=[];
+  public dataSource = new MatTableDataSource(this.salesReport);
+  shop:string;
+  edit:string;
+  applyFilter(){
+    var input, filter, table, tr, td, i,firstcol,fifthcol,sixthcol,nineth,tenth;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTab");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      firstcol = tr[i].getElementsByTagName("td")[1];
+      sixthcol=tr[i].getElementsByTagName("td")[5];
+      nineth=tr[i].getElementsByTagName("td")[9];
+      tenth=tr[i].getElementsByTagName("td")[10];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || firstcol.innerHTML.toUpperCase().indexOf(filter) > -1 || nineth.innerHTML.toUpperCase().indexOf(filter) > -1 ||sixthcol.innerHTML.toUpperCase().indexOf(filter) > -1 || tenth.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+}
+  constructor(private salesOrderService: SalesOrderService,private route:ActivatedRoute,
     private dialog?: MatDialog,
   ) { }
-  salesshow(salesOrder: SalesOrder) {
-    this.isPopupOpened = true;
-
-    const dialogRef = this.dialog.open(SalesReportDetailsComponent, {
-      data: salesOrder
-    });
-
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.isPopupOpened = false;
-    });
-  }
+  
 
   ngOnInit() {
-    this.salesOrderService.getSalesReport()
-      .subscribe((salesReport: Array<SalesOrder>) => {
-        this.salesReport = salesReport;
+    this.shop = this.route.snapshot.params['shop']; 
+    this.edit = this.route.snapshot.params['admin'];
+    if(this.edit=="anumod"){
+      this.salesOrderService.getAllOrders()
+      .subscribe((resultData: Array<SalesOrder>) => {
+        this.salesReport = resultData;
         this.dataSource = new MatTableDataSource(this.salesReport);
       });
+    }else{
+      this.salesOrderService.getAllOrders()
+      .subscribe((resultData: Array<SalesOrder>) => {
+        resultData.forEach(element => {
+          if(element.shop.shopName== this.shop){
+            this.salesReport.push(element);
+          }
+        });
+      });
+    }
+   
 
   }
 

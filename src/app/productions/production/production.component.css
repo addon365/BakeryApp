@@ -12,15 +12,21 @@
 .production_b1{
     float: right;
 }
-/* .display{
-    display:none;
-} */
-/* table, th, td {
-    border: 1px solid black;
-} */
+#printsection{
+    background: white;
+    margin-top: 5px;
+    padding: 20px;
+}
+
 table {
     width: 100%;
 }
+.comments{
+    width: 50%;
+    word-wrap: break-word;
+    border-color: white;
+ }
+ 
 /* td {
     height: 50%;
 } */
@@ -36,15 +42,20 @@ width: 150px;
 overflow: hidden;
 word-wrap: break-word;
 }
-/* .kill{
+.kill{
     position: relative;
-} */
+    left: 0px;
+}
 .td_1{
     position: relative;
     bottom: 5px;
 }
 .fixed{
     border-bottom: 2px solid;
+}
+.td_2{
+    position: relative;
+    top: 20px;
 }
 .display_1{
     display:none;
@@ -54,4 +65,8 @@ word-wrap: break-word;
 }
 .none{
     display: none;
+}
+.exceptedDate{
+    position: relative;
+    top: 16px;
 }

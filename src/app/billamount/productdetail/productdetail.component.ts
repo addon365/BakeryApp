@@ -24,6 +24,7 @@ import { UomService } from '../../services/uom.service';
 export class ProductdetailComponent implements OnInit {
   item: OrderItem;
   selected: Uom;
+  selected1: Flavour;
   uoms:Uom;
   condition:boolean=false;
   flavourvalue:string;
@@ -47,6 +48,7 @@ export class ProductdetailComponent implements OnInit {
     private productService: ProductService) { }
 
   ngOnInit() {
+   
     this.productService.getAll()
       .subscribe((products: Array<Product>) => {
         this.products = products;
@@ -103,22 +105,35 @@ export class ProductdetailComponent implements OnInit {
       
      
     }else{
-   
-      this.snackBar.open("Flavour must be added", "", {
+      for (let i of this.flavours) {
+        if (i.name == "Plain") {
         
-        duration: 2000,
-      });
-      this.FlavourName.focus();
+          this.item.flavour = i;
+          this.addToCart.emit(item);
+          this.itemName.focus();
+          const inputsearch = <HTMLInputElement>this.inputSearch.nativeElement;
+          inputsearch.select();
+          this.item = new OrderItem(
+            1,
+            item.product,
+            item.product.price,
+            1,
+            this.selected,
+            this.flavour1,
+            null);
+        }
+      }
     }
   }
 public flavour1:Flavour;
   onSelectionChange(event,product: Product, flavour: Flavour, uom: Uom) {
     for (let i of this.uom) {
-      if (i.id == 1) {
+      if (i.name == "Kg") {
 
         this.selected = i;
       }
     }
+   
     this.item = new OrderItem(
       1,
       product,

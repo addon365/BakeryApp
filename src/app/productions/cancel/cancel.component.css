@@ -1,0 +1,10 @@
+.print_order{
+    right: 30px;
+    position: relative;
+  }
+  .none{
+    display: none;
+  }
+  .order_1{
+    float: right;
+}

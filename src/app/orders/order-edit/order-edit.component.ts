@@ -36,10 +36,17 @@ this.balance=this.data.total - this.data.advance;
   }
 
   onSubmit() {
-  this.data.orderStatus = this.orderStatuses;
-    this.salesOrderService.editSalesOrder(this.data)
-      .subscribe((response) => {
-        this.dialogRef.close();
-      });
-  }
+    if(this.balance==this.data.total-this.data.advance){
+      this.data.orderStatus = this.orderStatuses;
+      this.salesOrderService.editSalesOrder(this.data)
+        .subscribe((response) => {
+          this.dialogRef.close();
+        });
+    }else{
+      this.snackBar.open("Enter Correct Balance Amount","", {
+        duration: 3000,
+       });
+    }
+    }
+ 
 }

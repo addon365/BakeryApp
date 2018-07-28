@@ -54,8 +54,9 @@ export class StoreSelectorComponent implements OnInit {
     this.chooseShop.emit(selectedShop);
     this.router.navigate(['/bill']);
   }
-  username:string ="admin"
-  password:string ="admin"
+  username:string ="1234"
+  password:string ="1234"
+  edit:string="anumod";
   loginUser(event){
    
     event.preventDefault();
@@ -64,7 +65,7 @@ export class StoreSelectorComponent implements OnInit {
     const password = target.querySelector('#password').value;
     if(this.username == username && this.password == password){
       this.chooseuser.emit(username);
-      this.router.navigate(['/orderlist']);
+      this.router.navigate(['/orderlist',{admin:this.edit}]);
     }else{
       this.snackBar.open("enter a correct user name and password","",{
         duration: 3000

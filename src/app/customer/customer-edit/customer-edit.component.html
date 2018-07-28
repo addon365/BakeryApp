@@ -22,7 +22,7 @@
             <div class="col-md-6">
               <label>Mobile Number</label>
               <mat-form-field class="example-full-width">
-                  <input matInput [(ngModel)]="data.mobile" [value]="mobile" name="mobile" maxlength="10" >
+                  <input matInput [(ngModel)]="data.mobile" minlength="10" maxlength="10" [value]="mobile" name="mobile" maxlength="10" >
                 </mat-form-field>
             </div>
           </div>

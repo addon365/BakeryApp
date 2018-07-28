@@ -20,6 +20,10 @@ import { ShopListComponent } from './shops/shop-list/shop-list.component';
 import { ProductionComponent } from './productions/production/production.component';
 import { InproductionComponent } from './productions/inproduction/inproduction.component';
 import { AllSalesReportComponent } from './sales/all-sales-report/all-sales-report.component';
+import { InstockComponent } from './productions/instock/instock.component';
+import { SalesReportPrintComponent } from './sales/sales-report-print/sales-report-print.component';
+import { CancelComponent } from './productions/cancel/cancel.component';
+import { CancelListComponent } from './productions/cancel-list/cancel-list.component';
 
 
 
@@ -57,8 +61,17 @@ const routes: Routes = [
         component: OrderlistComponent
     },
     {
+        path: 'orderlist/:admin',
+        component: OrderlistComponent
+    },
+   
+    {
         path: 'sales-report',
         component: SalesReportComponent
+    },
+    {
+        path:'delivery-report',
+        component:SalesReportPrintComponent
     },
     {
         path: 'flavour-add',
@@ -85,11 +98,27 @@ const routes: Routes = [
         component:InproductionComponent
     },
     {
+        path:'Instocklist',
+        component:InstockComponent
+    },
+    {
+        path:'Orderslist',
+        component:CancelComponent
+    },
+    {
+        path:'Cancellist',
+        component:CancelListComponent
+    },
+   
+    {
         path:'All-Sales-Report',
         component:AllSalesReportComponent
     },
    
-    
+    {
+        path:"**",
+        component:PageNotFoundComponent
+    }
 
 ];
 

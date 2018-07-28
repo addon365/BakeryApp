@@ -2,6 +2,25 @@
     <h1 class="header_1">Shop List</h1>
     <div class="example-container mat-elevation-z8">
         <div class="example-header">
+            <mat-form-field>
+                <input matInput type="text" id="myInput" (keyup)="applyFilter()" placeholder="Filter">
+              </mat-form-field>
+              </div>
+              <table id="myTable">
+                  <tr class="header">
+                    <th>Id</th>
+                    <th>ShopName</th>
+                    <th>ShopCode</th>
+                    <th></th>
+                  </tr>
+                  <tr *ngFor="let element of dataSource.data">
+                   <td>{{element.id}}</td>
+                   <td>{{element.shopName}}</td>
+                   <td>{{element.shopCode}}</td>
+                   <td> <button type="button" [disabled]="custom" (click)="editshop(element)" class="hide_button cusor" >Edit&nbsp;&nbsp;&nbsp;</button> </td>
+                  </tr>
+                </table>
+        <!-- <div class="example-header">
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
           </mat-form-field>
@@ -35,7 +54,7 @@
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        </table> -->
       </div>
      
     </div>

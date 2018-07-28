@@ -4,7 +4,7 @@ import { SalesOrderService } from "./services/sales-order.service";
 
 
 const API_URL = "http://localhost:8080/BakeryService-0.0.1-SNAPSHOT/";
-// const API_URL = "http://localhost:8080/";
+ //const API_URL = "http://localhost:8080/";
 const PRODUCT_URL = API_URL + "api/product/";
 const CUSTOMER_URL = API_URL + "api/customer/";
 const ORDER_URL = API_URL + "api/order/";
@@ -20,6 +20,7 @@ const GET_ACTION = "get";
 const ADD_ACTION = "add";
 const STATUS_ACTION = "getStatuses";
 const EDIT_ACTION = "edit";
+const DELETE_ACTION ="delete";
 const GET_ORDERS="getOrders";
 const ORDER_STATUS = "orderStatus";
 const REPORT_PARAM = "getReportParam/"
@@ -35,6 +36,7 @@ export class Utils {
     public static DELIVERED = "Delivered";
     public static IN_PRODUCTION = "InProduction";
     public static IN_STOCK = "InStock";
+    public static CANCELLED = "Cancelled";
 
 
     public static setOrderStatuses(orderStatuses: Array<OrderStatus>) {
@@ -61,6 +63,12 @@ export class Utils {
     } 
     public static getInproductionParamURL() {
         return ORDER_URL + REPORT_PARAM + this.IN_PRODUCTION;
+    } 
+    public static getInstockParamURL() {
+        return ORDER_URL + REPORT_PARAM + this.IN_STOCK;
+    } 
+    public static getCancelParamURL() {
+        return ORDER_URL + REPORT_PARAM + this.CANCELLED;
     } 
     
     
@@ -97,6 +105,10 @@ public static editShopURL() {
     public static editOrderURL() {
         return ORDER_URL + EDIT_ACTION;
     }
+    public static deleteOrderURL() {
+        return ORDER_URL + DELETE_ACTION;
+    }
+    
     public static getSalesURL() {
         return ORDER_URL + ACTION_SALES_REPORT;
     }
@@ -125,6 +137,10 @@ public static editShopURL() {
     public static editProductURL() {
         return PRODUCT_URL + EDIT_ACTION; 
     }
+    public static deleteProductURL() {
+        return PRODUCT_URL + DELETE_ACTION; 
+    }
+    
     public static addCustomerURL() {
         return CUSTOMER_URL + ADD_ACTION;
     }

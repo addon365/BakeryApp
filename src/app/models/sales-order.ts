@@ -7,6 +7,7 @@ import { Utils } from "../utils";
 export class SalesOrder {
     constructor(
         public id: number,
+        public customid:number,
         public customer: Customer,
         public advance: number,
         public total: number,
@@ -25,6 +26,7 @@ export class SalesOrder {
         
         return new SalesOrder(
             -1,
+            0,
             new Customer(
                 -1,
                 "",

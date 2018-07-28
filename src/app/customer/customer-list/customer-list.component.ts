@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { CustomerEditComponent } from '../customer-edit/customer-edit.component';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
+import{ActivatedRoute,Params} from '@angular/router';
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -14,18 +15,41 @@ export class CustomerListComponent implements OnInit {
   displayedColumns = ['id', 'name', 'mobile','amobile','actioncolumn'];
   @Input() public selectedCustomer:Customer;
   public customers: Array<Customer> = [];
+  edit:string;
+custom:boolean;
   public dataSource = new MatTableDataSource(this.customers);
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
-  constructor( private customerservice:CustomerService , private dialog?: MatDialog) { }
   
+  constructor( private customerservice:CustomerService, private route:ActivatedRoute, private dialog?: MatDialog) { }
   
+  applyFilter(){
+    var input, filter, table, tr, td, i,firstcol,fourthcol,seventh;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      firstcol = tr[i].getElementsByTagName("td")[1];
+      fourthcol = tr[i].getElementsByTagName("td")[2];
+     
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || firstcol.innerHTML.toUpperCase().indexOf(filter) > -1 || fourthcol.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+}
 
   ngOnInit() {
+    this.edit = this.route.snapshot.params['admin'];
+    if(this.edit=="anumod"){
+      this.custom=false;
+    }else{
+this.custom = true;
+    }
     this.customerservice.getAll()
       .subscribe((resultData: Array<Customer>) => {
         

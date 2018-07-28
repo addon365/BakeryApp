@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Utils } from '../utils';
 import { SalesOrder } from '../models/sales-order';
 
@@ -29,6 +29,10 @@ export class SalesOrderService {
   editSalesOrder(salesOrder: SalesOrder) {
     return this.httpClient.post(`${Utils.editOrderURL()}`, salesOrder);
   }
+  deleteSalesorder(salesOrder: SalesOrder) {
+  return this.httpClient.delete(`${Utils.deleteOrderURL()}`+`/${salesOrder.id}`);
+  }
+  
   getStatuses() {
     return this.httpClient.get(`${Utils.getStatusesURL()}`);
   }
@@ -37,6 +41,12 @@ export class SalesOrderService {
   }
   getInproductionParam(){
     return this.httpClient.get(`${Utils.getInproductionParamURL()}`);
+  }
+  getInstockParam(){
+    return this.httpClient.get(`${Utils.getInstockParamURL()}`);
+  }
+  getCancelParam(){
+    return this.httpClient.get(`${Utils.getCancelParamURL()}`);
   }
   movetoProduction(salesOrder: Array<SalesOrder>) {
     return this.httpClient.post(`${Utils.movetoProductionURL()}`,salesOrder);
