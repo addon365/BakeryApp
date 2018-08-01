@@ -41,7 +41,7 @@ export class AllSalesReportEditComponent implements OnInit {
   price:number;
   productvalue:string;
   dataSource: MatTableDataSource<OrderItem>;
-
+  date:Date;
   constructor(
     private dialogRef: MatDialogRef<AllSalesReportEditComponent>,
     private salesOrderService: SalesOrderService,
@@ -56,6 +56,7 @@ export class AllSalesReportEditComponent implements OnInit {
 
 balance:number;
   ngOnInit() {
+    this.date=this.data.expectedDate;
     this.orderItems=this.data.orderItems;   
 
     this.productService.getAll()
@@ -175,6 +176,15 @@ saveitem(){
 
 }
   onSubmit() {
+    if(this.date==this.data.expectedDate){
+this.data.expectedDate=this.date;
+    }else{
+      var today = new Date(this.data.expectedDate);
+      var tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate()+1);
+      tomorrow.toLocaleDateString();
+      this.data.expectedDate=tomorrow;
+    }
   this.data.orderItems=this.orderItems;
     this.salesOrderService.editSalesOrder(this.data)
       .subscribe((response) => {

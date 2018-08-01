@@ -10,10 +10,10 @@
                   <h3>Total:{{salesOrder.total}}</h3>
               </div>
               <div class="col-md-2" style="margin-top: 15px;">
-                  <button mat-button class="button_2" (click)="onOrderClick()" >Order</button>
+                  <button mat-button class="button_2 family" (click)="onOrderClick()" ><b>Order</b></button>
               </div>
               <div class="col-md-4" style="margin-top: 15px;">
-                  <button mat-button class="button_2" (click)="onCheckOut()">CheckOut</button>
+                  <button mat-button class="button_2 family" (click)="onCheckOut()"><b>CheckOut</b></button>
               </div>
             </div>
              
@@ -33,11 +33,11 @@
      
             <thead>
               <tr>
-                <td><b>Name</b></td>
-                <td><b>Flavour</b></td>
-                <td><b>Quantity</b></td>
-                <td><b>Price</b></td>
-                <td><b>Amount</b></td>
+                <td class="family"><b>Name</b></td>
+                <td class="family"><b>Flavour</b></td>
+                <td class="family"><b>Quantity</b></td>
+                <td class="family"><b>Price</b></td>
+                <td class="family"><b>Amount</b></td>
               </tr>
             </thead>
               <tbody>

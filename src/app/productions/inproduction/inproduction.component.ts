@@ -13,16 +13,19 @@ var input, filter, table, tr, td, i;
   styleUrls: ['./inproduction.component.css']
 })
 export class InproductionComponent implements OnInit {
+  
   public salesorder: Array<SalesOrder>=[];
   public salesorder1: Array<SalesOrder> =[];
   shop:string;
   edit:string;
   change:string;
+  result:Array<SalesOrder> = [];
   public dataSource = new MatTableDataSource<SalesOrder>(this.salesorder);
   selection = new SelectionModel<SalesOrder>(true, []);
    constructor(private salesOrderService: SalesOrderService,private route:ActivatedRoute,private router:Router,private snackBar: MatSnackBar,
    ) { }
   ngOnInit() {
+   
     this.shop = this.route.snapshot.params['shop']; 
     this.edit = this.route.snapshot.params['admin'];
     if(this.edit=="anumod"){
@@ -30,6 +33,7 @@ export class InproductionComponent implements OnInit {
       this.salesOrderService.getInproductionParam()
       .subscribe((resultData: Array<SalesOrder>) => {
         this.salesorder = resultData;
+        this.result=resultData;
         this.dataSource = new MatTableDataSource(this.salesorder);
       });
     }else{
@@ -39,13 +43,14 @@ this.change=this.shop;
         resultData.forEach(element => {
           if(element.shop.shopName== this.shop){
             this.salesorder.push(element);
+            this.result.push(element);
           }
         });
       });
     }
     
   }
-
+  
   onclick(salesorder:SalesOrder){
     const selectvalue =this.selection.isSelected(salesorder);
     if(selectvalue === false){
@@ -58,25 +63,36 @@ this.change=this.shop;
       }
      }
   }
+  anynumber:any;
   applyFilter(){
-    var input, filter, table, tr, td, i,firstcol,secondcol,fitfhcol,seventhcol;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTab");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      firstcol = tr[i].getElementsByTagName("td")[1];
-      fitfhcol=tr[i].getElementsByTagName("td")[6];
-      seventhcol=tr[i].getElementsByTagName("td")[7];
-      if (td) {
-        if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || firstcol.innerHTML.toUpperCase().indexOf(filter) > -1 || fitfhcol.innerHTML.toUpperCase().indexOf(filter) > -1 ||seventhcol.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
+    this.salesorder=[];
+    this.result.forEach(element => {
+      if(element.expectedDate==this.anynumber || element.customid==this.anynumber || element.customer.name==this.anynumber || element.orderStatus.name==this.anynumber ||element.shop.shopName==this.anynumber){
+        this.salesorder.push(element);
+     }
+    
+    });
+    if(this.anynumber==""){
+      this.salesorder=this.result;
     }
+    // var input, filter, table, tr, td, i,firstcol,secondcol,ninethcol,seventhcol;
+    // input = document.getElementById("myInput");
+    // filter = input.value.toUpperCase();
+    // table = document.getElementById("myTab");
+    // tr = table.getElementsByTagName("tr");
+    // for (i = 0; i < tr.length; i++) {
+    //   td = tr[i].getElementsByTagName("td")[1];
+    //   secondcol = tr[i].getElementsByTagName("td")[2];
+    //   seventhcol = tr[i].getElementsByTagName("td")[7];
+    //   ninethcol = tr[i].getElementsByTagName("td")[9];
+    //   if (td) {
+    //     if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || secondcol.innerHTML.toUpperCase().indexOf(filter) > -1 || seventhcol.innerHTML.toUpperCase().indexOf(filter) > -1 || ninethcol.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //       tr[i].style.display = "";
+    //     } else {
+    //       tr[i].style.display = "none";
+    //     }
+    //   }       
+    // }
 }
   onAllClick(){
     const selectAll= this.isAllSelected();

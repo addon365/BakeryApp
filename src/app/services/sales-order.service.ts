@@ -27,7 +27,7 @@ export class SalesOrderService {
   }
   
   editSalesOrder(salesOrder: SalesOrder) {
-    return this.httpClient.post(`${Utils.editOrderURL()}`, salesOrder);
+    return this.httpClient.post(`${Utils.editOrderURL()}`,salesOrder);
   }
   deleteSalesorder(salesOrder: SalesOrder) {
   return this.httpClient.delete(`${Utils.deleteOrderURL()}`+`/${salesOrder.id}`);

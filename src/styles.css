@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-body { padding-top: 20px; }
+body { padding-top: 20px;  font-family: sans-serif; }
 .btn-save{
     margin-top:10px;
 }
@@ -11,6 +11,9 @@ body { padding-top: 20px; }
     border-radius: 5px;
     color: white;
 
+}
+.family{
+    font-family: sans-serif;
 }
 .mat-card-title{
     margin-bottom: 0px !important;
@@ -188,7 +191,7 @@ bottom: 65px;
         font-size: 13px;
         background-color: white;
         position: relative;
-    right: 15px;
+    right: 35px;
       }
       #myTab th,#mytab td{
         text-align: left;

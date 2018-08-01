@@ -27,4 +27,7 @@
   .none{
     display: none;
   }
+  #myTab {
   
+    right: 88px;
+}

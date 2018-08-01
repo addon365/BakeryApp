@@ -25,6 +25,6 @@
     <span style="color: red;" *ngIf="price.touched && !price.valid">
         <div *ngIf="price.errors.required">*field is required*</div>
       </span>
-    <button mat-button (click)="onSubmit()" [disabled]="addproduct.invalid" href="#" style="background-color:#68829e;color:white ">Add Product</button>
+    <button mat-button (click)="onSubmit()" [disabled]="addproduct.invalid" href="#" style="background-color:#68829e;color:white" class="family"><b>Add Product</b></button>
   </form>
 </div>

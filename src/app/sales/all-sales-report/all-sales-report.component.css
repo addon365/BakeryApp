@@ -20,3 +20,6 @@
   .none{
     display: none;
   }
+  #myTab {
+    right: 0px;
+}

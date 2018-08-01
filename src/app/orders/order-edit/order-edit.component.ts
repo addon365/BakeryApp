@@ -30,9 +30,11 @@ export class OrderEditComponent implements OnInit {
   }
 
 balance:number;
+balance1:number;
   ngOnInit() {
     this.orderStatuses = Utils.getOrderStatus("Delivered") ;
 this.balance=this.data.total - this.data.advance;
+this.balance1=this.data.total - this.data.advance;
   }
 
   onSubmit() {
@@ -43,7 +45,7 @@ this.balance=this.data.total - this.data.advance;
           this.dialogRef.close();
         });
     }else{
-      this.snackBar.open("Enter Correct Balance Amount","", {
+      this.snackBar.open("Balance Amount is "+this.balance1,"", {
         duration: 3000,
        });
     }

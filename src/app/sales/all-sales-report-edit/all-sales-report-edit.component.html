@@ -34,7 +34,7 @@
         <div class="col-md-12">
           <div class="col-md-6">
         <mat-form-field class="example-full-width">
-          <input [(ngModel)]="data.expectedDate" name="data.expectedDate" matInput [matDatepicker]="dp3" disabled="true" placeholder="Excepted date:(MM/DD/YYYY)">
+          <input [(ngModel)]="data.expectedDate" name="data.expectedDate" [value]="date" matInput [matDatepicker]="dp3" disabled="true" placeholder="Excepted date:(MM/DD/YYYY)">
           <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
           <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>

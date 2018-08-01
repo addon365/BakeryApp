@@ -50,7 +50,6 @@ if(this.salesOrder.expectedDate == null){
   });
 }else{
   var today = new Date().toLocaleDateString();
-
   var expectedDate = this.salesOrder.expectedDate.toLocaleDateString();
       if(this.salesOrder.advance <= this.salesOrder.total && today <= expectedDate){
         this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
