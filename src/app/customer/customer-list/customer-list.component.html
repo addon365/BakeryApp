@@ -8,14 +8,14 @@
           </div>
           <table id="myTable">
               <tr class="header">
-                <th>Id</th>
+                <th>S/No</th>
                 <th>Name</th>
                 <th>Mobile No</th>
                 <th>AlternateMobile No</th>
                 <th></th>
               </tr>
-              <tr *ngFor="let element of dataSource.data">
-               <td>{{element.id}}</td>
+              <tr *ngFor="let element of dataSource.data;let i=index">
+               <td>{{i+1}}</td>
                <td>{{element.name}}</td>
                <td>{{element.mobile}}</td>
                <td>{{element.alternateMobile}}</td>

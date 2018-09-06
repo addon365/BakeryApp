@@ -42,6 +42,8 @@ export class AllSalesReportEditComponent implements OnInit {
   productvalue:string;
   dataSource: MatTableDataSource<OrderItem>;
   date:Date;
+  today = new Date();
+  minDate = new Date(this.today);
   constructor(
     private dialogRef: MatDialogRef<AllSalesReportEditComponent>,
     private salesOrderService: SalesOrderService,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Utils } from '../utils';
 import { SalesOrder } from '../models/sales-order';
+import { Sms } from '../models/sms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,12 @@ export class SalesOrderService {
 
   public getOrders() {
     return this.httpClient.get(`${Utils.getOrderURL()}`);
+  }
+  public SmsMessage(sms:Sms) {
+    return this.httpClient.post(`${Utils.getsmsURL()}`,sms);
+  }
+  public DeliveryMessage(sms:Sms) {
+    return this.httpClient.post(`${Utils.getdeliveryURL()}`,sms);
   }
   public getSalesReport() {
     return this.httpClient.get(`${Utils.getSalesURL()}`);

@@ -16,7 +16,7 @@ import { Utils } from '../../utils';
 })
 export class OrderDetailsComponent implements OnInit {
   @ViewChild('mobileinput') mobileinput: MatInput;
-  isPopupOpened = true;
+  isPopupOpened = false;
   @Output() orderCompleted = new EventEmitter<boolean>();
   @Input() public salesOrder: SalesOrder;
   @ViewChild('dateInput') date: MatInput;
@@ -26,7 +26,8 @@ export class OrderDetailsComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog?: MatDialog,
   ) { }
-
+   today = new Date();
+  minDate = new Date(this.today);
 
   ngOnInit() {
     this.salesOrder.expectedDate=null;
@@ -49,9 +50,10 @@ if(this.salesOrder.expectedDate == null){
     duration: 2000
   });
 }else{
-  var today = new Date().toLocaleDateString();
-  var expectedDate = this.salesOrder.expectedDate.toLocaleDateString();
-      if(this.salesOrder.advance <= this.salesOrder.total && today <= expectedDate){
+  // var today = new Date().toLocaleDateString();
+  // var expectedDate = this.salesOrder.expectedDate.toLocaleDateString();
+ 
+      if(this.salesOrder.advance <= this.salesOrder.total){
         this.salesOrder.orderStatus=Utils.getOrderStatus(Utils.PENDING);
       this.salesOrderService.addSalesOrder(this.salesOrder)
         .subscribe((response: SalesOrder) => {
@@ -72,15 +74,20 @@ if(this.salesOrder.expectedDate == null){
         });
        
       }else{
-        if(this.salesOrder.advance > this.salesOrder.total){
-          this.snackBar.open("Enter vaild Amount","",{
-                duration: 3000
-              });
-        }else if(expectedDate < today){
-          this.snackBar.open("Enter vaild date","",{
-                duration: 3000
-              });
-        }
+        this.snackBar.open("Enter vaild Amount","",{
+          duration: 3000
+        });
+        // if(this.salesOrder.advance > this.salesOrder.total){
+        //   this.snackBar.open("Enter vaild Amount","",{
+        //         duration: 3000
+        //       });
+        // }
+        //else if(expectedDate < today){
+        //   console.log(expectedDate,today);
+        //   this.snackBar.open("Enter vaild date","",{
+        //         duration: 3000
+        //       });
+        // }
       }
             
 }

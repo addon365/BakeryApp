@@ -6,6 +6,7 @@ import { SalesOrder } from '../../models/sales-order';
 import { OrderStatus } from '../../models/order-status';
 import { Utils } from '../../utils';
 import { SalesOrderService } from '../../services/sales-order.service';
+import { Sms } from '../../models/sms';
 
 @Component({
   selector: 'app-order-edit',
@@ -31,6 +32,7 @@ export class OrderEditComponent implements OnInit {
 
 balance:number;
 balance1:number;
+sms:Sms;
   ngOnInit() {
     this.orderStatuses = Utils.getOrderStatus("Delivered") ;
 this.balance=this.data.total - this.data.advance;
@@ -40,6 +42,10 @@ this.balance1=this.data.total - this.data.advance;
   onSubmit() {
     if(this.balance==this.data.total-this.data.advance){
       this.data.orderStatus = this.orderStatuses;
+      this.sms=new Sms(this.data.customer.mobile,"Delivered:Your OrderId "+ this.data.customid +" has been successfully delivered.Thanks Anumod Bakery");
+      this.salesOrderService.DeliveryMessage(this.sms)
+        .subscribe((response) => {
+        });
       this.salesOrderService.editSalesOrder(this.data)
         .subscribe((response) => {
           this.dialogRef.close();

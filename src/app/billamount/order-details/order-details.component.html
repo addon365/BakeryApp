@@ -49,7 +49,7 @@
              
               </span>
           <mat-form-field class="example-full-width">
-            <input [(ngModel)]="salesOrder.expectedDate" name="expectedDate" matInput [matDatepicker]="dp3" placeholder="Excepted date:(MM/DD/YYYY)" disabled required>
+            <input [(ngModel)]="salesOrder.expectedDate" name="expectedDate" matInput [min]="minDate" [matDatepicker]="dp3" placeholder="Excepted date:(MM/DD/YYYY)" disabled required>
             <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
             <mat-datepicker #dp3 disabled="false"></mat-datepicker>
           </mat-form-field>

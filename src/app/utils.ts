@@ -8,6 +8,7 @@ const API_URL = "http://localhost:8080/";
 const PRODUCT_URL = API_URL + "api/product/";
 const CUSTOMER_URL = API_URL + "api/customer/";
 const ORDER_URL = API_URL + "api/order/";
+const SMS_URL = API_URL + "api/sms/";
 const SHOP_URL = API_URL + "api/shop/";
 const FLAVOUR_URL = API_URL + "api/flavours/";
 const USER_URL = API_URL + "api/user/";
@@ -23,11 +24,12 @@ const EDIT_ACTION = "edit";
 const DELETE_ACTION ="delete";
 const GET_ORDERS="getOrders";
 const ORDER_STATUS = "orderStatus";
-const REPORT_PARAM = "getReportParam/"
-const MOVE_TO_PRODUCTION = "moveToProduction"
-const MOVE_TO_InStock = "moveToStock"
-const CHECK_OUT = "checkout"
-
+const REPORT_PARAM = "getReportParam/";
+const MOVE_TO_PRODUCTION = "moveToProduction";
+const MOVE_TO_InStock = "moveToStock";
+const CHECK_OUT = "checkout";
+const SEND_ORDER="ordermsg";
+const SEND_DELIVERY="deliverymsg";
 
 export class Utils {
     
@@ -58,6 +60,13 @@ export class Utils {
         });
         return orderStatus;
     }
+    public static getsmsURL() {
+        return SMS_URL + SEND_ORDER;
+    } 
+    public static getdeliveryURL() {
+        return SMS_URL + SEND_DELIVERY;
+    } 
+    
     public static getPendingParamURL() {
         return ORDER_URL + REPORT_PARAM + this.PENDING;
     } 

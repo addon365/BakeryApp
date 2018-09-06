@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, inject, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { SalesOrder } from '../../models/sales-order';
+import { Sms } from '../../models/sms';
+import { SalesOrderService } from '../../services/sales-order.service';
 
 
 
@@ -13,7 +15,8 @@ import { SalesOrder } from '../../models/sales-order';
 export class PrintComponent implements OnInit {
   today: number = Date.now();
   balance:number;
-  constructor(
+  sms:Sms;
+  constructor(private salesorderservice:SalesOrderService,private snackBar:MatSnackBar,
     private dialogRef: MatDialogRef<PrintComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SalesOrder
     ) {
@@ -27,7 +30,8 @@ export class PrintComponent implements OnInit {
   @ViewChild('printsection') printsection: ElementRef;
  
   print(): void {
-    let printContents, popupWin;
+
+let printContents, popupWin;
     
     printContents = document.getElementById('printsection').innerHTML;
     popupWin = window.open('', '_blank');
@@ -88,6 +92,14 @@ export class PrintComponent implements OnInit {
       </html>`
     );
     popupWin.document.close();
-} 
+
+    this.sms=new Sms(this.data.customer.mobile,"Hi "+this.data.customer.name+", Your OrderId "+this.data.customid+" is successfully placed.For more information please contact 8900998800.Thanks Anumod Bakery");
+    this.salesorderservice.SmsMessage(this.sms)
+    .subscribe((response) => {
+      this.dialogRef.close();
+      
+});
+
+  }
  
 }
