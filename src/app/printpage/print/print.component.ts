@@ -30,7 +30,17 @@ export class PrintComponent implements OnInit {
   @ViewChild('printsection') printsection: ElementRef;
  
   print(): void {
-
+    if(confirm('Do You Want to Send Message to Customer ?') == true ){
+      this.sms=new Sms(this.data.customer.mobile,"Hi "+this.data.customer.name+", Your OrderId "+this.data.customid+" is successfully placed.For more information please contact 8900998800.Thanks Anumod Bakery");
+    this.salesorderservice.SmsMessage(this.sms)
+    .subscribe((response) => {
+      this.dialogRef.close();
+      
+});
+}else{
+  this.dialogRef.close();
+}
+   
 let printContents, popupWin;
     
     printContents = document.getElementById('printsection').innerHTML;
@@ -93,12 +103,7 @@ let printContents, popupWin;
     );
     popupWin.document.close();
 
-    this.sms=new Sms(this.data.customer.mobile,"Hi "+this.data.customer.name+", Your OrderId "+this.data.customid+" is successfully placed.For more information please contact 8900998800.Thanks Anumod Bakery");
-    this.salesorderservice.SmsMessage(this.sms)
-    .subscribe((response) => {
-      this.dialogRef.close();
-      
-});
+   
 
   }
  
